@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nova Green Foundation's partners — UN agencies, national ministries, global NGOs, research institutes, and corporate pioneers driving ecological transformation across East Africa.">
+  <title>Partners & Alliances | Nova Green Foundation</title>
+  <script>
+    (function() {
+      try {
+        var s = localStorage.getItem('nova-theme');
+        var d = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', s || (d ? 'dark' : 'light'));
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    /* ── Partners Page Architectural Brutalist Card Styles ── */
+    .partner-controls-bar {
+      background: #ffffff;
+      border: 2px solid var(--forest-900);
+      border-radius: 0 !important;
+      padding: 1.5rem;
+      margin-bottom: var(--space-xl);
+      box-shadow: 6px 6px 0px var(--forest-900);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    [data-theme="dark"] .partner-controls-bar {
+      background: #091a12;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 6px 6px 0px var(--accent);
+    }
+    .partner-controls-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .partner-search-box {
+      position: relative;
+      flex: 1;
+      min-width: 280px;
+      max-width: 440px;
+    }
+    .partner-search-box svg {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted-text);
+      pointer-events: none;
+    }
+    .partner-search-input {
+      width: 100%;
+      padding: 0.75rem 2.6rem 0.75rem 2.75rem;
+      border-radius: 0 !important;
+      border: 1.5px solid var(--forest-900);
+      background: var(--surface);
+      color: var(--dark-text);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      transition: all var(--duration-fast);
+      outline: none;
+    }
+    [data-theme="dark"] .partner-search-input {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: #0f2318;
+    }
+    .partner-search-input:focus {
+      border-color: var(--forest-900);
+      box-shadow: 3px 3px 0px var(--forest-900);
+    }
+    [data-theme="dark"] .partner-search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 3px 3px 0px var(--accent);
+    }
+    .partner-search-clear {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--muted-text);
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      border-radius: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .partner-search-clear:hover {
+      color: var(--dark-text);
+      background: var(--forest-50);
+    }
+    .partner-meta-indicator {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--light-text);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .partner-filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .partner-filter-btn {
+      background: var(--surface);
+      border: 1.5px solid var(--forest-900);
+      color: var(--forest-900);
+      padding: 0.45rem 0.9rem;
+      border-radius: 0 !important;
+      font-size: 0.78rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--duration-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    [data-theme="dark"] .partner-filter-btn {
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #e5f5ed;
+      background: #091a12;
+    }
+    .partner-filter-btn:hover {
+      background: var(--forest-50);
+      transform: translate(-1px, -1px);
+      box-shadow: 2px 2px 0px var(--forest-900);
+    }
+    [data-theme="dark"] .partner-filter-btn:hover {
+      background: #143222;
+      box-shadow: 2px 2px 0px var(--accent);
+    }
+    .partner-filter-btn.active {
+      background: var(--forest-900);
+      color: #ffffff;
+      border-color: var(--forest-900);
+      box-shadow: 2px 2px 0px var(--forest-900);
+    }
+    [data-theme="dark"] .partner-filter-btn.active {
+      background: var(--accent);
+      color: var(--forest-950);
+      border-color: var(--accent);
+      box-shadow: 2px 2px 0px var(--accent);
+      font-weight: 700;
+    }
+    .partner-filter-count {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.1rem 0.35rem;
+      border-radius: 0;
+      background: rgba(0, 0, 0, 0.08);
+      color: inherit;
+    }
+    .partner-filter-btn.active .partner-filter-count {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    [data-theme="dark"] .partner-filter-btn.active .partner-filter-count {
+      background: rgba(13, 43, 26, 0.25);
+    }
+
+    /* Partner Cards Grid */
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+    @media (max-width: 1100px) {
+      .partners-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .partners-grid { grid-template-columns: 1fr; }
+    }
+
+    .partner-card {
+      background: #ffffff;
+      border: 2px solid var(--forest-900);
+      border-radius: 0 !important;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 6px 6px 0px var(--forest-900);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      cursor: pointer;
+    }
+    .partner-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0px var(--forest-900);
+    }
+    [data-theme="dark"] .partner-card {
+      background: #091a12;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 6px 6px 0px var(--accent);
+    }
+    [data-theme="dark"] .partner-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0px var(--accent);
+    }
+
+    .partner-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+      gap: 0.75rem;
+    }
+    .partner-emblem-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 0 !important;
+      background: var(--surface);
+      border: 1.5px solid var(--forest-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 0.5rem;
+      box-shadow: 3px 3px 0px var(--forest-900);
+      transition: transform var(--duration-fast);
+    }
+    [data-theme="dark"] .partner-emblem-wrap {
+      background: #0f2318;
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 3px 3px 0px var(--accent);
+    }
+    .partner-card:hover .partner-emblem-wrap {
+      transform: scale(1.05);
+    }
+    .partner-emblem-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .partner-badge-pill {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 0 !important;
+      background: var(--forest-50);
+      color: var(--forest-900);
+      border: 1.5px solid var(--forest-900);
+      white-space: nowrap;
+    }
+    [data-theme="dark"] .partner-badge-pill {
+      background: #0f2318;
+      color: var(--accent);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .partner-card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .partner-name {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--forest-900);
+      line-height: 1.3;
+      margin-bottom: 0.25rem;
+    }
+    [data-theme="dark"] .partner-name {
+      color: #f5fbf7;
+    }
+    .partner-type {
+      font-size: 0.76rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 700;
+      color: var(--forest-700);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    [data-theme="dark"] .partner-type {
+      color: var(--accent);
+    }
+    .partner-desc {
+      font-size: 0.875rem;
+      color: var(--light-text);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+    .partner-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 1.25rem;
+    }
+    .partner-tag {
+      font-size: 0.7rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0 !important;
+      background: var(--surface);
+      color: var(--forest-900);
+      border: 1px solid var(--forest-900);
+    }
+    [data-theme="dark"] .partner-tag {
+      background: #0f2318;
+      color: #d1e7dd;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .partner-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1.5px solid var(--forest-900);
+      margin-top: auto;
+    }
+    [data-theme="dark"] .partner-card-footer {
+      border-top: 1.5px solid rgba(255, 255, 255, 0.15);
+    }
+    .partner-impact-metric {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--forest-900);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    [data-theme="dark"] .partner-impact-metric {
+      color: var(--accent);
+    }
+    .partner-dossier-trigger {
+      background: var(--surface);
+      border: 1px solid var(--forest-900);
+      color: var(--forest-900);
+      font-size: 0.74rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 0 !important;
+      transition: all var(--duration-fast);
+    }
+    .partner-dossier-trigger:hover {
+      background: var(--forest-900);
+      color: #ffffff;
+      transform: translate(-1px, -1px);
+      box-shadow: 2px 2px 0px var(--forest-900);
+    }
+    [data-theme="dark"] .partner-dossier-trigger {
+      background: #0f2318;
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #e5f5ed;
+    }
+    [data-theme="dark"] .partner-dossier-trigger:hover {
+      background: var(--accent);
+      color: var(--forest-950);
+      border-color: var(--accent);
+      box-shadow: 2px 2px 0px var(--accent);
+    }
+
+    /* Modal Styling */
+    .partner-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 1.5rem;
+    }
+    .partner-modal.open {
+      display: flex;
+    }
+    .partner-modal-backdrop {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(3, 7, 4, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .partner-modal-dialog {
+      position: relative;
+      background: #ffffff;
+      border: 2px solid var(--forest-900);
+      border-radius: 0 !important;
+      padding: 2.5rem;
+      max-width: 620px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 10px 10px 0px var(--forest-900);
+      z-index: 10;
+      animation: modalPop 0.25s var(--ease-out);
+    }
+    [data-theme="dark"] .partner-modal-dialog {
+      background: #091a12;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 10px 10px 0px var(--accent);
+    }
+    @keyframes modalPop {
+      0% { opacity: 0; transform: scale(0.95) translateY(12px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .partner-modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--surface);
+      border: 1.5px solid var(--forest-900);
+      width: 36px;
+      height: 36px;
+      border-radius: 0 !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--forest-900);
+      cursor: pointer;
+      transition: all var(--duration-fast);
+    }
+    .partner-modal-close:hover {
+      background: var(--forest-900);
+      color: #ffffff;
+    }
+    [data-theme="dark"] .partner-modal-close {
+      background: #0f2318;
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #e5f5ed;
+    }
+    [data-theme="dark"] .partner-modal-close:hover {
+      background: var(--accent);
+      color: var(--forest-950);
+      border-color: var(--accent);
+    }
+    .modal-header-section {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 2px solid var(--forest-900);
+    }
+    [data-theme="dark"] .modal-header-section {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    .modal-logo-box {
+      width: 72px;
+      height: 72px;
+      border-radius: 0 !important;
+      background: var(--surface);
+      border: 1.5px solid var(--forest-900);
+      box-shadow: 3px 3px 0px var(--forest-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem;
+      flex-shrink: 0;
+    }
+    [data-theme="dark"] .modal-logo-box {
+      background: #0f2318;
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 3px 3px 0px var(--accent);
+    }
+    .modal-dossier-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      background: var(--surface);
+      border-radius: 0 !important;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+      border: 1.5px solid var(--forest-900);
+      box-shadow: 4px 4px 0px var(--forest-900);
+    }
+    [data-theme="dark"] .modal-dossier-grid {
+      background: #0f2318;
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 4px 4px 0px var(--accent);
+    }
+    .modal-dossier-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-dossier-label {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--light-text);
+      margin-bottom: 0.2rem;
+    }
+    .modal-dossier-val {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark-text);
+    }
+
+    /* Spotlight Case Studies */
+    .case-spotlight-card {
+      background: #ffffff;
+      border: 2px solid var(--forest-900);
+      border-radius: 0 !important;
+      padding: 2.25rem;
+      box-shadow: 6px 6px 0px var(--forest-900);
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .case-spotlight-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0px var(--forest-900);
+    }
+    [data-theme="dark"] .case-spotlight-card {
+      background: #091a12;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 6px 6px 0px var(--accent);
+    }
+    [data-theme="dark"] .case-spotlight-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0px var(--accent);
+    }
+    @media (max-width: 860px) {
+      .case-spotlight-card { grid-template-columns: 1fr; }
+    }
+
+    /* Pathway Selection Cards */
+    .pathway-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+      margin: var(--space-xl) 0;
+    }
+    @media (max-width: 1024px) {
+      .pathway-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .pathway-grid { grid-template-columns: 1fr; }
+    }
+    .pathway-card {
+      background: #07190f;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 0 !important;
+      box-shadow: 6px 6px 0px var(--accent);
+      padding: 1.75rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pathway-card:hover {
+      background: #0b2416;
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0px var(--accent);
+      border-color: var(--accent);
+    }
+    .pathway-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 0 !important;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1.5px solid var(--accent);
+      box-shadow: 2px 2px 0px var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    .pathway-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.4rem;
+    }
+    .pathway-desc {
+      font-size: 0.86rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+    .case-outcomes-box {
+      background: var(--surface);
+      border: 1.5px solid var(--forest-900);
+      border-radius: 0 !important;
+      padding: 1.5rem;
+      box-shadow: 4px 4px 0px var(--forest-900);
+    }
+    [data-theme="dark"] .case-outcomes-box {
+      background: #0f2318;
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 4px 4px 0px var(--accent);
+    }
+    .partner-voice-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 0 !important;
+      background: var(--surface);
+      border: 1.5px solid var(--forest-900);
+      box-shadow: 2px 2px 0px var(--forest-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--forest-900);
+    }
+    [data-theme="dark"] .partner-voice-avatar {
+      background: #0f2318;
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 2px 2px 0px var(--accent);
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar transparent" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Nova Green Foundation Home">
+        <img src="../assets/images/logo.jpg" alt="Nova Green Foundation">
+      </a>
+      <div class="nav-links">
+        <a href="../index.html"   class="nav-link" data-page="home">Home</a>
+        <a href="about.html"      class="nav-link" data-page="about">About Us</a>
+        <a href="programmes.html" class="nav-link" data-page="programmes">Programmes</a>
+        <a href="board.html"      class="nav-link" data-page="board">Board & Leadership</a>
+        <a href="sdgs.html"       class="nav-link" data-page="sdgs">SDGs & Impact</a>
+        <a href="partners.html"   class="nav-link active" data-page="partners">Partners</a>
+        <a href="news.html"       class="nav-link" data-page="news">News & Updates</a>
+        <a href="contact.html"    class="nav-link" data-page="contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light or dark theme" title="Toggle theme">
+          <span class="theme-icon sun-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="theme-icon moon-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        </button>
+        <a href="#become-partner" class="btn btn-accent nav-cta">Become a Partner</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="../index.html"   class="nav-mobile-link" data-page="home">Home</a>
+    <a href="about.html"      class="nav-mobile-link" data-page="about">About Us</a>
+    <a href="programmes.html" class="nav-mobile-link" data-page="programmes">Programmes</a>
+    <a href="board.html"      class="nav-mobile-link" data-page="board">Board & Leadership</a>
+    <a href="sdgs.html"       class="nav-mobile-link" data-page="sdgs">SDGs & Impact</a>
+    <a href="partners.html"   class="nav-mobile-link active" data-page="partners">Partners</a>
+    <a href="news.html"       class="nav-mobile-link" data-page="news">News & Updates</a>
+    <a href="contact.html"    class="nav-mobile-link" data-page="contact">Contact</a>
+    <div class="nav-mobile-actions">
+      <button class="mobile-theme-btn" id="mobile-theme-btn" aria-label="Toggle theme">
+        <span class="theme-icon sun-icon">Light Mode</span>
+        <span class="theme-icon moon-icon">Dark Mode</span>
+      </button>
+      <a href="#become-partner" class="btn btn-accent" style="text-align:center;width:100%">Become a Partner</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero" aria-label="Partners page header">
+      <div class="hero-bg" style="background-image:url('../assets/images/about-hero.jpg')"></div>
+      <div class="page-hero-overlay"></div>
+      <div class="container page-hero-content">
+        <span class="section-label" style="color:var(--gold-300)">Multilateral Coalitions</span>
+        <h1 class="display-2 text-white">Our Strategic Partners</h1>
+        <div class="gold-divider"></div>
+        <p class="body-lg text-white" style="opacity:0.9;max-width:620px">
+          Ecological crises cannot be solved in isolation. Nova Green Foundation unifies multilateral treaties, sovereign ministries, scientific research institutes, and corporate champions into unified pan-African impact.
+        </p>
+      </div>
+    </section>
+
+    <!-- Verified Partnership Impact Stats Bar -->
+    <div class="stats-bar" aria-label="Partnership impact metrics">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item reveal">
+            <span class="stat-number" data-count="46">0</span>
+            <div class="stat-label">Total Institutional Partners</div>
+          </div>
+          <div class="stat-item reveal">
+            <span class="stat-number" data-count="28">0</span>
+            <div class="stat-label">Operating Jurisdictions</div>
+          </div>
+          <div class="stat-item reveal">
+            <span class="stat-number" data-count="5">0</span>
+            <div class="stat-label">UN Multilateral Agencies</div>
+          </div>
+          <div class="stat-item reveal">
+            <span class="stat-number" data-count="12">0</span>
+            <div class="stat-label">Corporate ESG Champions</div>
+          </div>
+          <div class="stat-item reveal">
+            <span class="stat-number" data-count="14.5" data-prefix="$" data-suffix="M" data-decimals="1">$0M</span>
+            <div class="stat-label">Mobilized Climate Capital</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Catalog Section -->
+    <section class="section" id="partners-catalog" aria-labelledby="partners-heading">
+      <div class="container">
+        <div class="text-center mb-lg reveal">
+          <span class="section-label">Global & Grassroots Network</span>
+          <h2 class="display-2" id="partners-heading">Coalitions Driving Ecological Action</h2>
+          <div class="gold-divider center"></div>
+          <p class="body-md text-light" style="max-width:640px;margin:0 auto">
+            Browse our global network across multilateral agencies, sovereign governments, conservation NGOs, research consortia, and private-sector ESG pioneers.
+          </p>
+        </div>
+
+        <!-- Filter & Search Control Center -->
+        <div class="partner-controls-bar reveal">
+          <div class="partner-controls-top">
+            <div class="partner-filter-pills" role="tablist" aria-label="Partner categories">
+              <button class="partner-filter-btn active" data-partner-filter="all" role="tab">All Alliances <span class="partner-filter-count">24</span></button>
+              <button class="partner-filter-btn" data-partner-filter="multilateral" role="tab">UN & Multilateral <span class="partner-filter-count">4</span></button>
+              <button class="partner-filter-btn" data-partner-filter="government" role="tab">Governments & Policy <span class="partner-filter-count">4</span></button>
+              <button class="partner-filter-btn" data-partner-filter="ngo" role="tab">International NGOs <span class="partner-filter-count">8</span></button>
+              <button class="partner-filter-btn" data-partner-filter="academic" role="tab">Academic & Science <span class="partner-filter-count">4</span></button>
+              <button class="partner-filter-btn" data-partner-filter="corporate" role="tab">Corporate ESG <span class="partner-filter-count">4</span></button>
+            </div>
+            <div class="partner-search-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="partner-search-input" class="partner-search-input" placeholder="Search partner, initiative, or country…" aria-label="Search partner organizations">
+              <button type="button" id="partner-search-clear" class="partner-search-clear" aria-label="Clear search">×</button>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:0.75rem;border-top:1px solid var(--card-border);">
+            <div class="partner-meta-indicator" id="partner-visible-count">24 Organizations Listed</div>
+            <div class="body-xs text-light">Click any organization to inspect the full collaboration dossier</div>
+          </div>
+        </div>
+
+        <!-- Empty search state -->
+        <div id="partner-empty-state" style="display:none;text-align:center;padding:var(--space-2xl) 0;" class="reveal">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--forest-50);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-md);color:var(--forest-600);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <h3 class="heading-2 mb-xs">No Partner Organizations Match Your Search</h3>
+          <p class="body-sm text-light mb-md">Try searching for a different keyword such as "water", "forest", "UN", or "solar".</p>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('partner-search-input').value='';document.getElementById('partner-search-input').dispatchEvent(new Event('input'));">Reset Search Filters</button>
+        </div>
+
+        <!-- 24 Partner Cards Grid -->
+        <div class="partners-grid" id="partners-grid-container">
+
+          <!-- 01: UNEP -->
+          <div class="partner-card reveal" data-category="multilateral" data-name="United Nations Environment Programme (UNEP)" data-tier-label="Multilateral Treaty" data-category-label="UN Agency" data-year="2025" data-focus="Global Policy & Digital MRV" data-desc="Lead global authority setting the global environmental agenda and promoting coherent sustainable development." data-initiative="East Africa Digital MRV System & Great Green Wall Canopy Monitoring" data-impact="1.2M Hectares Under Satellite MRV">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="44" stroke="#009edb" stroke-width="4" stroke-dasharray="6 3"/>
+                  <ellipse cx="50" cy="50" rx="34" ry="18" stroke="#009edb" stroke-width="2.5" fill="none"/>
+                  <line x1="50" y1="10" x2="50" y2="90" stroke="#009edb" stroke-width="2.5"/>
+                  <path d="M26 65 C32 78, 68 78, 74 65 C68 72, 32 72, 26 65 Z" fill="#2e7d52"/>
+                  <path d="M50 30 C45 42, 42 56, 50 62 C58 56, 55 42, 50 30 Z" fill="#2e7d52"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Strategic UN Partner</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">UNEP</div>
+              <div class="partner-type">UN Environment Programme</div>
+              <p class="partner-desc">Collaborating on regional ecosystem accounting, biodiversity loss mitigation, and satellite canopy verifications across East African water towers.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">SDG 13 Climate</span>
+                <span class="partner-tag">SDG 15 Life on Land</span>
+                <span class="partner-tag">Digital MRV</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 1.2M Ha Mapped</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 02: UNDP -->
+          <div class="partner-card reveal" data-category="multilateral" data-name="United Nations Development Programme (UNDP)" data-tier-label="Multilateral Facility" data-category-label="UN Agency" data-year="2020" data-focus="GEF Small Grants & Water" data-desc="Pioneering community-based sustainable livelihoods and landscape regeneration across arid counties." data-initiative="GEF Small Grants Highland Water Towers & River Catchment Rehabilitation" data-impact="18 River Basins Protected">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <rect x="18" y="22" width="28" height="28" rx="4" fill="#006eb5"/>
+                  <rect x="54" y="22" width="28" height="28" rx="4" fill="#00a3e0"/>
+                  <rect x="18" y="58" width="28" height="20" rx="4" fill="#2e7d52"/>
+                  <rect x="54" y="58" width="28" height="20" rx="4" fill="#c9a84c"/>
+                  <circle cx="50" cy="50" r="10" fill="#ffffff"/>
+                  <path d="M50 44 L54 50 L50 56 L46 50 Z" fill="#0d2b1a"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">GEF Lead Grantee</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">UNDP</div>
+              <div class="partner-type">UN Development Programme</div>
+              <p class="partner-desc">Accredited implementing agency for the Global Environment Facility (GEF) Small Grants Programme, funding community water infrastructure.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">SDG 6 Clean Water</span>
+                <span class="partner-tag">SDG 1 No Poverty</span>
+                <span class="partner-tag">Catchment Basins</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 18 Catchments</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 03: FAO -->
+          <div class="partner-card reveal" data-category="multilateral" data-name="Food and Agriculture Organization (FAO)" data-tier-label="Multilateral Agency" data-category-label="UN Agency" data-year="2022" data-focus="Agroforestry & Soil Carbon" data-desc="Transforming agri-food systems to be more inclusive, resilient, and sustainable." data-initiative="Farmer-Managed Natural Regeneration (FMNR) & Drought-Tolerant Seed Hubs" data-impact="8,400 Smallholders Trained">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="42" stroke="#c9a84c" stroke-width="3"/>
+                  <path d="M50 18 L50 82" stroke="#2e7d52" stroke-width="4"/>
+                  <path d="M50 30 Q35 22 28 32 Q42 36 50 38" fill="#c9a84c"/>
+                  <path d="M50 38 Q65 30 72 40 Q58 44 50 46" fill="#c9a84c"/>
+                  <path d="M50 48 Q35 40 28 50 Q42 54 50 56" fill="#c9a84c"/>
+                  <path d="M50 58 Q65 50 72 60 Q58 64 50 66" fill="#c9a84c"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Technical Partner</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">FAO</div>
+              <div class="partner-type">Food & Agriculture Organization</div>
+              <p class="partner-desc">Co-deploying farmer-managed natural regeneration (FMNR) methodologies and indigenous food tree varieties across arid smallholdings.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">SDG 2 Zero Hunger</span>
+                <span class="partner-tag">Agroforestry</span>
+                <span class="partner-tag">Soil Carbon</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 8,400 Farmers</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 04: UNICEF -->
+          <div class="partner-card reveal" data-category="multilateral" data-name="UNICEF East & Southern Africa" data-tier-label="Multilateral Agency" data-category-label="UN Agency" data-year="2021" data-focus="Eco-WASH & Climate Education" data-desc="Ensuring every child grows up in a clean, climate-resilient, water-secure community." data-initiative="Solarized School Water Kiosks & Youth Environmental Sanitation" data-impact="42 Primary Schools Solarized">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="42" fill="none" stroke="#1cabe2" stroke-width="3"/>
+                  <circle cx="50" cy="36" r="10" fill="#1cabe2"/>
+                  <path d="M34 68 C34 52, 66 52, 66 68 Z" fill="#1cabe2"/>
+                  <circle cx="50" cy="52" r="5" fill="#ffffff"/>
+                  <path d="M22 50 C26 76, 74 76, 78 50" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">WASH Alliance</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">UNICEF</div>
+              <div class="partner-type">UN Children's Fund</div>
+              <p class="partner-desc">Deploying solar water filtration boreholes and ecological sanitation modules in primary schools across Turkana and Garissa counties.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">SDG 6 Safe Water</span>
+                <span class="partner-tag">SDG 4 Education</span>
+                <span class="partner-tag">Eco-Schools</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 42 Eco-Schools</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 05: Kenya MOE -->
+          <div class="partner-card reveal" data-category="government" data-name="Kenya Ministry of Environment & Forestry" data-tier-label="Sovereign Ministry" data-category-label="Government" data-year="2019" data-focus="National Reforestation & Policy" data-desc="Fostering national ecological governance and achieving Kenya's 30% tree cover national commitment." data-initiative="Aberdare Water Tower Restoration & Seedling Production Concessions" data-impact="320,000 Seedlings Supplied">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <path d="M50 14 L80 32 L72 74 L50 88 L28 74 L20 32 Z" fill="#0d2b1a" stroke="#c9a84c" stroke-width="3"/>
+                  <path d="M50 24 L68 56 L32 56 Z" fill="#2e7d52"/>
+                  <path d="M50 40 L62 66 L38 66 Z" fill="#ffffff"/>
+                  <circle cx="50" cy="72" r="4" fill="#c9a84c"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">National Strategic</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">Ministry of Environment</div>
+              <div class="partner-type">Republic of Kenya</div>
+              <p class="partner-desc">Designated official civil society delivery partner contributing toward Kenya's National Tree Growing Restoration Strategy across key water towers.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">National Policy</span>
+                <span class="partner-tag">Aberdare Tower</span>
+                <span class="partner-tag">Afforestation</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 320k Seedlings</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 06: Uganda NEMA -->
+          <div class="partner-card reveal" data-category="government" data-name="Uganda NEMA (National Environment Management Authority)" data-tier-label="Regulatory Authority" data-category-label="Government" data-year="2021" data-focus="Cross-Border Riparian Wetlands" data-desc="Apex regulatory agency overseeing national sustainable environmental management across Uganda." data-initiative="Lake Victoria Basin Wetland Buffer Restoration & Plastic Traps" data-impact="45km Riparian Shoreline">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="42" fill="#0d2b1a" stroke="#c9a84c" stroke-width="3"/>
+                  <path d="M22 62 C32 52, 42 72, 54 58 C66 44, 76 60, 84 52" stroke="#3d9966" stroke-width="5" fill="none" stroke-linecap="round"/>
+                  <path d="M50 20 L58 38 L42 38 Z" fill="#c9a84c"/>
+                  <circle cx="50" cy="44" r="3" fill="#ffffff"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Bilateral Partner</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">Uganda NEMA</div>
+              <div class="partner-type">National Environment Management Authority</div>
+              <p class="partner-desc">Co-managing transboundary catchment preservation and papyrus wetland rehabilitation along the northern littoral shores of Lake Victoria.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">Wetlands</span>
+                <span class="partner-tag">Lake Victoria</span>
+                <span class="partner-tag">Cross-Border</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 45km Shoreline</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 07: European Union -->
+          <div class="partner-card reveal" data-category="government" data-name="European Union — GCCA+ Facility" data-tier-label="Multilateral Donor" data-category-label="Government" data-year="2022" data-focus="Climate Adaptation & Circularity" data-desc="The European Union's Global Climate Change Alliance Plus initiative supporting frontline resilience." data-initiative="Renewable Rural Microgrids & Agricultural Byproduct Circularity" data-impact="€3.8M Facility Grantee">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="44" fill="#003399"/>
+                  <g fill="#ffcc00">
+                    <polygon points="50,16 52,21 57,21 53,24 55,29 50,26 45,29 47,24 43,21 48,21"/>
+                    <polygon points="67,21 69,26 74,26 70,29 72,34 67,31 62,34 64,29 60,26 65,26"/>
+                    <polygon points="79,33 81,38 86,38 82,41 84,46 79,43 74,46 76,41 72,38 77,38"/>
+                    <polygon points="84,50 86,55 91,55 87,58 89,63 84,60 79,63 81,58 77,55 82,55"/>
+                    <polygon points="79,67 81,72 86,72 82,75 84,80 79,77 74,80 76,75 72,72 77,72"/>
+                    <polygon points="67,79 69,84 74,84 70,87 72,92 67,89 62,92 64,87 60,84 65,84"/>
+                    <polygon points="50,84 52,89 57,89 53,92 55,97 50,94 45,97 47,92 43,89 48,89"/>
+                    <polygon points="33,79 35,84 40,84 36,87 38,92 33,89 28,92 30,87 26,84 31,84"/>
+                    <polygon points="21,67 23,72 28,72 24,75 26,80 21,77 16,80 18,75 14,72 19,72"/>
+                    <polygon points="16,50 18,55 23,55 19,58 21,63 16,60 11,63 13,58 9,55 14,55"/>
+                    <polygon points="21,33 23,38 28,38 24,41 26,46 21,43 16,46 18,41 14,38 19,38"/>
+                    <polygon points="33,21 35,26 40,26 36,29 38,34 33,31 28,34 30,29 26,26 31,26"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Funding Partner</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">European Union</div>
+              <div class="partner-type">GCCA+ Climate Facility</div>
+              <p class="partner-desc">Co-funding institutional expansion of distributed rural solar microgrids and youth green entrepreneurship incubators across northern Kenya.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">Grant Co-Funding</span>
+                <span class="partner-tag">Climate Finance</span>
+                <span class="partner-tag">Clean Energy</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> €3.8M Mobilized</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 08: African Union Commission -->
+          <div class="partner-card reveal" data-category="government" data-name="African Union Commission (AUC)" data-tier-label="Continental Body" data-category-label="Government" data-year="2023" data-focus="Great Green Wall & Agenda 2063" data-desc="Pan-African continental union uniting 55 member states toward Agenda 2063 green growth." data-initiative="Great Green Wall Initiative Eastern Anchor & Continental Agroforestry" data-impact="Continental NGO Charter">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="42" stroke="#c9a84c" stroke-width="3" fill="#0d2b1a"/>
+                  <path d="M42 24 C48 22, 64 24, 68 32 C72 40, 72 50, 62 58 C58 64, 52 74, 48 80 C44 76, 42 66, 36 60 C30 52, 28 44, 34 34 Z" fill="#2e7d52" stroke="#c9a84c" stroke-width="1.5"/>
+                  <circle cx="50" cy="50" r="28" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="3 3"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Policy Charter</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">African Union</div>
+              <div class="partner-type">African Union Commission</div>
+              <p class="partner-desc">Official civil society partner for the Great Green Wall Initiative (GGWI), integrating community reforestation with continental Agenda 2063 targets.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">Great Green Wall</span>
+                <span class="partner-tag">Agenda 2063</span>
+                <span class="partner-tag">Pan-African</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> GGWI East Anchor</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 09: WWF East Africa -->
+          <div class="partner-card reveal" data-category="ngo" data-name="World Wildlife Fund (WWF) East Africa" data-tier-label="Conservation INGO" data-category-label="International NGO" data-year="2020" data-focus="Wildlife Corridors & Habitat" data-desc="Leading global conservation organization safeguarding endangered habitats and ecological connectivity." data-initiative="Mara-Serengeti & Aberdare Wildlife Corridor Regeneration" data-impact="85km Forest Corridors">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <rect width="100" height="100" rx="16" fill="#ffffff"/>
+                  <ellipse cx="50" cy="54" rx="26" ry="24" fill="#111a14"/>
+                  <circle cx="40" cy="46" r="6" fill="#ffffff"/>
+                  <circle cx="60" cy="46" r="6" fill="#ffffff"/>
+                  <circle cx="41" cy="46" r="3" fill="#111a14"/>
+                  <circle cx="59" cy="46" r="3" fill="#111a14"/>
+                  <ellipse cx="50" cy="62" rx="8" ry="5" fill="#ffffff"/>
+                  <circle cx="28" cy="34" r="8" fill="#111a14"/>
+                  <circle cx="72" cy="34" r="8" fill="#111a14"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Conservation Ally</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">WWF East Africa</div>
+              <div class="partner-type">World Wildlife Fund</div>
+              <p class="partner-desc">Collaborating on landscape-scale corridor restoration, reconnecting fragmented elephant migration pathways through indigenous community nurseries.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">SDG 15 Biodiversity</span>
+                <span class="partner-tag">Wildlife Corridors</span>
+                <span class="partner-tag">Indigenous Flora</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 85km Corridors</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 10: IUCN -->
+          <div class="partner-card reveal" data-category="ngo" data-name="International Union for Conservation of Nature (IUCN)" data-tier-label="Standards & Science" data-category-label="International NGO" data-year="2021" data-focus="Nature-based Solutions Standards" data-desc="Global authority on the status of the natural world and measures needed to safeguard it." data-initiative="IUCN Global Standard for Nature-based Solutions (NbS) Certification" data-impact="Verified NbS Accreditation">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <polygon points="50,14 84,34 84,72 50,92 16,72 16,34" fill="#0d2b1a" stroke="#2e7d52" stroke-width="4"/>
+                  <circle cx="50" cy="34" r="6" fill="#c9a84c"/>
+                  <circle cx="70" cy="50" r="6" fill="#c9a84c"/>
+                  <circle cx="30" cy="50" r="6" fill="#c9a84c"/>
+                  <circle cx="50" cy="72" r="6" fill="#c9a84c"/>
+                  <line x1="50" y1="34" x2="70" y2="50" stroke="#a8d5b7" stroke-width="2"/>
+                  <line x1="50" y1="34" x2="30" y2="50" stroke="#a8d5b7" stroke-width="2"/>
+                  <line x1="30" y1="50" x2="50" y2="72" stroke="#a8d5b7" stroke-width="2"/>
+                  <line x1="70" y1="50" x2="50" y2="72" stroke="#a8d5b7" stroke-width="2"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Science & Standards</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">IUCN</div>
+              <div class="partner-type">International Union for Conservation of Nature</div>
+              <p class="partner-desc">Implementing the IUCN Global Standard for Nature-based Solutions across all Nova Green restoration sites, ensuring verified ecological integrity.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">NbS Standard</span>
+                <span class="partner-tag">Red List Ecology</span>
+                <span class="partner-tag">Peer-Reviewed</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Certified NbS</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 11: Rainforest Alliance -->
+          <div class="partner-card reveal" data-category="ngo" data-name="Rainforest Alliance" data-tier-label="Certification INGO" data-category-label="International NGO" data-year="2022" data-focus="Sustainable Agriculture Audits" data-desc="Creating a more sustainable world by using social and market forces to protect nature." data-initiative="Shade-Grown Coffee Agroforestry & Smallholder Carbon Certification" data-impact="16 Cooperatives Certified">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="42" fill="#006853"/>
+                  <circle cx="36" cy="36" r="9" fill="#e35205"/>
+                  <circle cx="64" cy="36" r="9" fill="#e35205"/>
+                  <circle cx="36" cy="36" r="4" fill="#ffffff"/>
+                  <circle cx="64" cy="36" r="4" fill="#ffffff"/>
+                  <path d="M30 62 C34 46, 66 46, 70 62 C62 72, 38 72, 30 62 Z" fill="#69be28"/>
+                  <path d="M42 60 Q50 66 58 60" stroke="#006853" stroke-width="2.5"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Certification Ally</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">Rainforest Alliance</div>
+              <div class="partner-type">Sustainable Supply Chains</div>
+              <p class="partner-desc">Partnering on shade-grown coffee canopy standards, regenerative farming audits, and connecting community cooperatives to premium ethical buyers.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">Shade Coffee</span>
+                <span class="partner-tag">Fair Trade</span>
+                <span class="partner-tag">Certified Green</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 16 Cooperatives</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 12: GreenFund Africa -->
+          <div class="partner-card reveal" data-category="ngo" data-name="GreenFund Africa" data-tier-label="Impact Endowment" data-category-label="International NGO" data-year="2021" data-focus="Blended Finance & Grants" data-desc="Catalyzing catalytic philanthropic capital into high-integrity grassroots restoration initiatives." data-initiative="Seed Capital Revolving Fund for Community Tree Nursery Micro-Enterprises" data-impact="$2.4M Direct Grassroots Capital">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="42" fill="#0d2b1a" stroke="#c9a84c" stroke-width="3"/>
+                  <circle cx="50" cy="50" r="28" stroke="#c9a84c" stroke-width="2" stroke-dasharray="4 4"/>
+                  <path d="M50 30 L50 70 M40 40 C40 34, 60 34, 60 46 C60 56, 40 54, 40 64 C40 70, 60 70, 60 64" stroke="#c9a84c" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M56 26 C64 24, 74 34, 66 42 Z" fill="#2e7d52"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Funding Partner</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">GreenFund Africa</div>
+              <div class="partner-type">Catalytic Philanthropy</div>
+              <p class="partner-desc">Providing multi-year unrestricted core funding and seed micro-grants for female-led community tree nursery cooperatives in rural counties.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">Blended Finance</span>
+                <span class="partner-tag">Micro-Grants</span>
+                <span class="partner-tag">Women In Green</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> $2.4M Disbursed</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 13: The Ocean Foundation -->
+          <div class="partner-card reveal" data-category="ngo" data-name="The Ocean Foundation" data-tier-label="Marine & Freshwater" data-category-label="International NGO" data-year="2023" data-focus="Blue Carbon & Mangroves" data-desc="Conserving and restoring ocean ecosystems and coastal carbon sink habitats worldwide." data-initiative="Coastal Mangrove Estuary Blue Carbon Restoration in Lamu Archipelago" data-impact="180,000 Mangroves Planted">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="42" fill="#0d2b1a" stroke="#009edb" stroke-width="3"/>
+                  <path d="M20 54 C32 46, 40 62, 50 54 C60 46, 68 62, 80 54" stroke="#009edb" stroke-width="4" stroke-linecap="round" fill="none"/>
+                  <path d="M20 68 C32 60, 40 76, 50 68 C60 60, 68 76, 80 68" stroke="#3d9966" stroke-width="4" stroke-linecap="round" fill="none"/>
+                  <circle cx="50" cy="34" r="8" fill="#c9a84c"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Blue Carbon Ally</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">The Ocean Foundation</div>
+              <div class="partner-type">Marine & Coastal Habitats</div>
+              <p class="partner-desc">Expanding blue carbon sequestration models through community-stewarded mangrove estuarine replanting along Kenya's Indian Ocean coast.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">SDG 14 Below Water</span>
+                <span class="partner-tag">Blue Carbon</span>
+                <span class="partner-tag">Lamu Estuaries</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 180k Mangroves</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 14: Solar Africa Initiative -->
+          <div class="partner-card reveal" data-category="ngo" data-name="Solar Africa Initiative" data-tier-label="Clean Tech INGO" data-category-label="International NGO" data-year="2022" data-focus="Rural Off-Grid Microgrids" data-desc="Accelerating universal renewable electrification across marginalized pastoralist communities." data-initiative="Turkana & Marsabit Off-Grid Solar Pumping & Microgrid Deployment" data-impact="12 Solar Microgrids">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="18" fill="#c9a84c"/>
+                  <g stroke="#c9a84c" stroke-width="3" stroke-linecap="round">
+                    <line x1="50" y1="12" x2="50" y2="24"/>
+                    <line x1="50" y1="76" x2="50" y2="88"/>
+                    <line x1="12" y1="50" x2="24" y2="50"/>
+                    <line x1="76" y1="50" x2="88" y2="50"/>
+                    <line x1="23" y1="23" x2="31" y2="31"/>
+                    <line x1="69" y1="69" x2="77" y2="77"/>
+                    <line x1="23" y1="77" x2="31" y2="69"/>
+                    <line x1="69" y1="31" x2="77" y2="23"/>
+                  </g>
+                  <polygon points="50,42 44,52 49,52 47,60 55,48 50,48" fill="#0d2b1a"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Clean Tech Ally</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">Solar Africa Initiative</div>
+              <div class="partner-type">Clean Energy Access</div>
+              <p class="partner-desc">Co-financing and engineering decentralized solar mini-grids that provide emission-free power for drip irrigation, rural schools, and health centers.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">SDG 7 Clean Energy</span>
+                <span class="partner-tag">Microgrids</span>
+                <span class="partner-tag">Solar Pumps</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 12 Microgrids</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 15: CGIAR -->
+          <div class="partner-card reveal" data-category="ngo" data-name="CGIAR Agricultural Consortium" data-tier-label="Global Research" data-category-label="International NGO" data-year="2021" data-focus="Climate-Smart Agriculture" data-desc="World's largest global agricultural innovation network creating a food-secure future." data-initiative="Drought-Resilient Sorghum & Indigenous Legume Intercropping Trials" data-impact="28 Field Research Trials">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="42" fill="#0d2b1a" stroke="#2e7d52" stroke-width="3"/>
+                  <path d="M30 65 Q50 30 70 65" stroke="#c9a84c" stroke-width="3" fill="none"/>
+                  <circle cx="36" cy="55" r="5" fill="#3d9966"/>
+                  <circle cx="50" cy="40" r="6" fill="#c9a84c"/>
+                  <circle cx="64" cy="55" r="5" fill="#3d9966"/>
+                  <line x1="50" y1="40" x2="50" y2="78" stroke="#2e7d52" stroke-width="3"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Science Partner</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">CGIAR</div>
+              <div class="partner-type">Agrigenomics & Science</div>
+              <p class="partner-desc">Conducting field-validated agronomic trials to determine optimal nitrogen-fixing tree species compatible with indigenous cereal crop yields.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">Field Trials</span>
+                <span class="partner-tag">Climate Crops</span>
+                <span class="partner-tag">Agri-Science</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 28 Trials Active</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 16: The Nature Conservancy -->
+          <div class="partner-card reveal" data-category="ngo" data-name="The Nature Conservancy (TNC)" data-tier-label="Global Land Trust" data-category-label="International NGO" data-year="2022" data-focus="Community Conservancies" data-desc="Conserving the lands and waters on which all life depends through cooperative trust models." data-initiative="Northern Rangelands Trust Grazing Management & Soil Carbon Insetting" data-impact="220,000 Ha Rangelands">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="42" fill="#005a36"/>
+                  <path d="M50 20 C34 32, 28 62, 50 80 C72 62, 66 32, 50 20 Z" fill="#78be20"/>
+                  <path d="M50 24 L50 76" stroke="#005a36" stroke-width="3"/>
+                  <path d="M50 38 Q38 48 34 56" stroke="#005a36" stroke-width="2"/>
+                  <path d="M50 50 Q62 60 66 66" stroke="#005a36" stroke-width="2"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Landscape Partner</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">The Nature Conservancy</div>
+              <div class="partner-type">Landscape Trust & Grazing</div>
+              <p class="partner-desc">Implementing rotational rangeland grazing frameworks and holistic soil carbon sequestration metrics with indigenous pastoralist elders.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">Rangelands</span>
+                <span class="partner-tag">Carbon Sinks</span>
+                <span class="partner-tag">Conservancies</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 220k Ha Managed</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 17: University of Nairobi -->
+          <div class="partner-card reveal" data-category="academic" data-name="University of Nairobi (UoN)" data-tier-label="Academic Faculty" data-category-label="Academic & Science" data-year="2020" data-focus="Forest Ecology & Botany" data-desc="Premier East African research university advancing empirical environmental sciences." data-initiative="Seed Viability Research & Regional Micro-Climate Botanical Mapping" data-impact="14 Postgraduate Fellowships">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <path d="M50 16 L84 32 L50 48 L16 32 Z" fill="#0d2b1a" stroke="#c9a84c" stroke-width="3"/>
+                  <rect x="36" y="52" width="28" height="26" rx="2" fill="#2e7d52" stroke="#c9a84c" stroke-width="2"/>
+                  <path d="M36 64 L64 64" stroke="#ffffff" stroke-width="2"/>
+                  <line x1="50" y1="52" x2="50" y2="78" stroke="#ffffff" stroke-width="2"/>
+                  <circle cx="84" cy="40" r="4" fill="#c9a84c"/>
+                  <path d="M84 44 L84 62" stroke="#c9a84c" stroke-width="2"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Academic Lead</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">University of Nairobi</div>
+              <div class="partner-type">Faculty of Science & Technology</div>
+              <p class="partner-desc">Long-term botanical partner testing indigenous mycorrhizal inoculation for accelerated sapling survival rates in montane micro-climates.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">Botanical Research</span>
+                <span class="partner-tag">Postgrad Grants</span>
+                <span class="partner-tag">Mycorrhiza</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 14 Fellowships</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 18: Makerere University -->
+          <div class="partner-card reveal" data-category="academic" data-name="Makerere University Kampala" data-tier-label="Academic Faculty" data-category-label="Academic & Science" data-year="2021" data-focus="Hydrological Modelling" data-desc="Uganda's largest and oldest higher learning institution, renowned for environmental research." data-initiative="Lake Kyoga Catchment Siltation Sensor Array & Hydrology Studies" data-impact="6 Sensor Basins Installed">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <rect x="22" y="30" width="56" height="54" rx="4" fill="#0d2b1a" stroke="#c9a84c" stroke-width="3"/>
+                  <polygon points="50,14 74,30 26,30" fill="#2e7d52" stroke="#c9a84c" stroke-width="2"/>
+                  <circle cx="50" cy="50" r="10" stroke="#ffffff" stroke-width="2.5"/>
+                  <line x1="50" y1="44" x2="50" y2="50" stroke="#ffffff" stroke-width="2"/>
+                  <line x1="50" y1="50" x2="54" y2="54" stroke="#ffffff" stroke-width="2"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Science Partner</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">Makerere University</div>
+              <div class="partner-type">School of Forestry, Env. & Geo-Sciences</div>
+              <p class="partner-desc">Providing scientific telemetry and siltation telemetry analyzing downstream river velocity following upstream riparian vegetation planting.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">Hydrology</span>
+                <span class="partner-tag">Sediment Silt</span>
+                <span class="partner-tag">Uganda Hub</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 6 Basins Mapped</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 19: CIFOR-ICRAF -->
+          <div class="partner-card reveal" data-category="academic" data-name="CIFOR-ICRAF (World Agroforestry)" data-tier-label="International Center" data-category-label="Academic & Science" data-year="2020" data-focus="Agroforestry & Tree Diversity" data-desc="World leader in tree-based solutions to climate, poverty, and ecological degradation." data-initiative="Seed Orchard Network & Carbon Biomass Calculation Algorithms" data-impact="Global Open Data Contributor">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="42" fill="#1b4332"/>
+                  <circle cx="38" cy="44" r="14" fill="#2d6a4f"/>
+                  <circle cx="62" cy="44" r="14" fill="#40916c"/>
+                  <circle cx="50" cy="34" r="16" fill="#52b788"/>
+                  <rect x="47" y="48" width="6" height="30" fill="#d8f3dc"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">World Authority</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">CIFOR-ICRAF</div>
+              <div class="partner-type">Center for International Forestry Research</div>
+              <p class="partner-desc">Collaborating on allometric biomass equations that mathematically verify carbon sink tonnage per hectare across East African montane forests.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">Carbon Equations</span>
+                <span class="partner-tag">Tree Genetics</span>
+                <span class="partner-tag">Global Science</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Verified Algorithms</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 20: Oxford University -->
+          <div class="partner-card reveal" data-category="academic" data-name="University of Oxford (Environmental Change Institute)" data-tier-label="Academic Faculty" data-category-label="Academic & Science" data-year="2023" data-focus="Nature-based Climate Solutions" data-desc="Pioneering multidisciplinary research into environmental resilience and climate adaptation policy." data-initiative="Longitudinal Socio-Ecological Household Income Resilience Assessment" data-impact="Published Peer-Reviewed Study">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <path d="M50 14 L80 28 L72 74 L50 88 L28 74 L20 28 Z" fill="#002147" stroke="#c9a84c" stroke-width="3"/>
+                  <path d="M36 38 L50 32 L64 38 L64 54 L50 48 L36 54 Z" fill="#ffffff"/>
+                  <polygon points="50,62 52,66 56,66 53,69 54,73 50,71 46,73 47,69 44,66 48,66" fill="#c9a84c"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Global Research</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">Oxford University</div>
+              <div class="partner-type">Environmental Change Institute (ECI)</div>
+              <p class="partner-desc">Conducting multi-year longitudinal socioeconomic assessments evaluating direct household income dividends generated by community-owned nurseries.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">Oxford ECI</span>
+                <span class="partner-tag">Livelihoods</span>
+                <span class="partner-tag">Peer-Reviewed</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Published Paper</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 21: KenyaPower Green -->
+          <div class="partner-card reveal" data-category="corporate" data-name="KenyaPower Green Energy" data-tier-label="Corporate Utility" data-category-label="Corporate ESG" data-year="2022" data-focus="Grid Modernization & Biomass" data-desc="National transmission leader transitioning power distribution networks to zero-emission renewables." data-initiative="Grid-Tied Rural Microgrid Interconnections & Forest Corridor Wayleave Stewardship" data-impact="32 Off-Grid Grid Ties">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="42" fill="#0d2b1a" stroke="#2e7d52" stroke-width="3"/>
+                  <polygon points="54,20 34,50 48,50 44,80 66,44 52,44" fill="#c9a84c"/>
+                  <path d="M62 38 C72 44, 74 62, 60 70" stroke="#3d9966" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Energy Partner</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">KenyaPower Green</div>
+              <div class="partner-type">National Utility Grid Ally</div>
+              <p class="partner-desc">Pioneering hybrid off-grid mini-grid to national grid interconnects and planting indigenous low-canopy trees beneath high-voltage transmission wayleaves.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">Renewables</span>
+                <span class="partner-tag">Microgrid Ties</span>
+                <span class="partner-tag">Wayleave Care</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 32 Grid Ties</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 22: EcoBank Kenya -->
+          <div class="partner-card reveal" data-category="corporate" data-name="EcoBank Kenya" data-tier-label="Financial Institution" data-category-label="Corporate ESG" data-year="2021" data-focus="Green Microfinance & ESG Bonds" data-desc="Pan-African commercial bank championing accessible green credit lines for eco-enterprises." data-initiative="Micro-Loans for Solar Water Pumps & Women Agroforestry Cooperatives" data-impact="$4.2M Green Loan Portfolio">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <rect width="100" height="100" rx="16" fill="#004d71"/>
+                  <path d="M22 66 L50 24 L78 66 Z" fill="none" stroke="#ffffff" stroke-width="5"/>
+                  <path d="M34 66 L50 42 L66 66 Z" fill="#00a3e0"/>
+                  <circle cx="50" cy="56" r="4" fill="#c9a84c"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Impact Finance</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">EcoBank Kenya</div>
+              <div class="partner-type">Sustainable Banking Leader</div>
+              <p class="partner-desc">Underwriting low-interest sustainability-linked loan facilities for smallholder farmer cooperatives purchasing solar drip irrigation and certified seedlings.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">Green Loans</span>
+                <span class="partner-tag">Low-Interest Credit</span>
+                <span class="partner-tag">Women Led</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> $4.2M Portfolios</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 23: Safaricom Foundation -->
+          <div class="partner-card reveal" data-category="corporate" data-name="Safaricom Foundation" data-tier-label="Tech Philanthropy" data-category-label="Corporate ESG" data-year="2020" data-focus="IoT Environmental Sensors & Telemetry" data-desc="Corporate philanthropic foundation harnessing mobile telecommunications for social impact." data-initiative="Forest Fire Early Warning IoT Sensors & Mobile Money Solar Subsidies" data-impact="120 IoT Alert Nodes">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <rect width="100" height="100" rx="16" fill="#0d2b1a"/>
+                  <path d="M50 20 C66 20, 80 34, 80 50" stroke="#00a859" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M50 32 C60 32, 68 40, 68 50" stroke="#00a859" stroke-width="4" stroke-linecap="round"/>
+                  <circle cx="50" cy="50" r="8" fill="#e30613"/>
+                  <path d="M32 70 C36 60, 48 54, 50 50" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Tech Pioneer</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">Safaricom Foundation</div>
+              <div class="partner-type">Technology & ESG Capital</div>
+              <p class="partner-desc">Deploying solar-powered GSM/IoT sensors across the Aberdare range for real-time smoke detection, while enabling mobile M-Pesa tree survival bounties.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">IoT Sensors</span>
+                <span class="partner-tag">M-Pesa Bounties</span>
+                <span class="partner-tag">Fire Early Warning</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 120 IoT Nodes</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+          <!-- 24: Kenya Airways -->
+          <div class="partner-card reveal" data-category="corporate" data-name="Kenya Airways" data-tier-label="Aviation Sector" data-category-label="Corporate ESG" data-year="2023" data-focus="Verified Voluntary Carbon Offsets" data-desc="The Pride of Africa airline committed to CORSIA international aviation carbon offset standards." data-initiative="Fly Green Carbon Insetting Portfolio & Montane Reforestation" data-impact="65,000 Verified Offsets">
+            <div class="partner-card-header">
+              <div class="partner-emblem-wrap">
+                <svg class="partner-emblem-svg" viewBox="0 0 100 100" fill="none">
+                  <circle cx="50" cy="50" r="42" fill="#9e1b32"/>
+                  <path d="M22 62 Q50 36 78 28 Q64 54 36 68 Z" fill="#ffffff"/>
+                  <path d="M50 46 L62 58 L54 60 Z" fill="#c9a84c"/>
+                  <circle cx="50" cy="50" r="38" stroke="#ffffff" stroke-width="2" stroke-dasharray="6 4"/>
+                </svg>
+              </div>
+              <span class="partner-badge-pill">Carbon Insetting</span>
+            </div>
+            <div class="partner-card-body">
+              <div class="partner-name">Kenya Airways</div>
+              <div class="partner-type">National Flag Carrier</div>
+              <p class="partner-desc">Enabling passengers and cargo operations to verify voluntary carbon insetting through geo-referenced tree planting verified across Mount Kenya catchments.</p>
+              <div class="partner-tags-row">
+                <span class="partner-tag">CORSIA Compliant</span>
+                <span class="partner-tag">Aviation Offsets</span>
+                <span class="partner-tag">Mt. Kenya Sinks</span>
+              </div>
+            </div>
+            <div class="partner-card-footer">
+              <span class="partner-impact-metric"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 65k Insets</span>
+              <button type="button" class="partner-dossier-trigger">Dossier →</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- In-Depth Partnership Spotlights / Case Studies -->
+    <section class="section bg-cream" aria-labelledby="case-studies-heading">
+      <div class="container">
+        <div class="text-center mb-lg reveal">
+          <span class="section-label">Co-Created Milestones</span>
+          <h2 class="display-2" id="case-studies-heading">Partnership Case Studies</h2>
+          <div class="gold-divider center"></div>
+          <p class="body-md text-light" style="max-width:600px;margin:0 auto">
+            Exemplary multilateral and corporate collaborations delivering audited, generational outcomes for African landscapes.
+          </p>
+        </div>
+
+        <div style="max-width:960px;margin:0 auto">
+          <!-- Case 1 -->
+          <div class="case-spotlight-card reveal">
+            <div>
+              <span class="partner-badge-pill" style="margin-bottom:0.75rem;display:inline-block">Multilateral Strategic</span>
+              <h3 class="heading-1" style="font-size:1.4rem;line-height:1.3;margin-bottom:0.75rem">UNEP East Africa Canopy & Digital MRV Facility</h3>
+              <p class="body-sm text-light mb-md">
+                In 2025, Nova Green entered a formal memorandum with UNEP's regional hub to pilot high-resolution remote sensing verification for indigenous tree species survival across high-altitude cloud forests.
+              </p>
+              <div style="display:flex;gap:1.5rem;font-family:ui-monospace,monospace;font-size:0.8rem">
+                <div><strong style="color:var(--accent);display:block;font-size:1.2rem">1.2M Ha</strong> Audited Canopy</div>
+                <div><strong style="color:var(--accent);display:block;font-size:1.2rem">94.2%</strong> Tree Survival Rate</div>
+              </div>
+            </div>
+            <div class="case-outcomes-box">
+              <h4 style="font-size:0.9rem;font-weight:700;margin-bottom:0.6rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--mid-text)">Key Mandate Outcomes:</h4>
+              <ul style="font-size:0.86rem;color:var(--light-text);line-height:1.7;padding-left:1.2rem">
+                <li>Automated drone lidar scanning integrated with global UNEP biodiversity database.</li>
+                <li>Direct open-source GIS repository accessible to university researchers.</li>
+                <li>Eliminated self-reporting bias through third-party sovereign verification audits.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Case 2 -->
+          <div class="case-spotlight-card reveal">
+            <div>
+              <span class="partner-badge-pill" style="margin-bottom:0.75rem;display:inline-block">Global Facility Grant</span>
+              <h3 class="heading-1" style="font-size:1.4rem;line-height:1.3;margin-bottom:0.75rem">UNDP GEF Small Grants: Highland Water Catchments</h3>
+              <p class="body-sm text-light mb-md">
+                Initiated in 2020, this partnership mobilized 18 community water user associations (WRUAs) across Aberdare rivers to rehabilitate deforested riparian margins through agroforestry tree buffers.
+              </p>
+              <div style="display:flex;gap:1.5rem;font-family:ui-monospace,monospace;font-size:0.8rem">
+                <div><strong style="color:var(--accent);display:block;font-size:1.2rem">18 WRUAs</strong> Basin Coalitions</div>
+                <div><strong style="color:var(--accent);display:block;font-size:1.2rem">34% Less</strong> Silt Runoff</div>
+              </div>
+            </div>
+            <div class="case-outcomes-box">
+              <h4 style="font-size:0.9rem;font-weight:700;margin-bottom:0.6rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--mid-text)">Key Mandate Outcomes:</h4>
+              <ul style="font-size:0.86rem;color:var(--light-text);line-height:1.7;padding-left:1.2rem">
+                <li>Restored 340 kilometers of critical riverbank vegetation buffer.</li>
+                <li>Constructed 24 gravity-fed solar filtration taps eliminating water-borne illnesses.</li>
+                <li>Established self-sustaining community nursery enterprises generating local revenue.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Case 3 -->
+          <div class="case-spotlight-card reveal">
+            <div>
+              <span class="partner-badge-pill" style="margin-bottom:0.75rem;display:inline-block">Corporate ESG Innovation</span>
+              <h3 class="heading-1" style="font-size:1.4rem;line-height:1.3;margin-bottom:0.75rem">Safaricom Foundation: IoT Forest Alert Grid</h3>
+              <p class="body-sm text-light mb-md">
+                A pioneering fusion of telecommunications technology and conservation ecology. Low-power IoT nodes installed across mountain ridges continuously sniff for trace volatile organic smoke compounds.
+              </p>
+              <div style="display:flex;gap:1.5rem;font-family:ui-monospace,monospace;font-size:0.8rem">
+                <div><strong style="color:var(--accent);display:block;font-size:1.2rem">&lt; 8 Mins</strong> Alert Dispatch</div>
+                <div><strong style="color:var(--accent);display:block;font-size:1.2rem">Zero</strong> Catastrophic Fires</div>
+              </div>
+            </div>
+            <div class="case-outcomes-box">
+              <h4 style="font-size:0.9rem;font-weight:700;margin-bottom:0.6rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--mid-text)">Key Mandate Outcomes:</h4>
+              <ul style="font-size:0.86rem;color:var(--light-text);line-height:1.7;padding-left:1.2rem">
+                <li>120 connected environmental telemetry nodes active across vulnerable forest borders.</li>
+                <li>M-Pesa micropayments distributed directly to women tree stewards upon photo survival audits.</li>
+                <li>Protected 45,000 hectares of young regenerating saplings from illegal encroachment.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partner Voices / Testimonials -->
+    <section class="section" aria-labelledby="partner-voices-heading">
+      <div class="container">
+        <div class="text-center mb-lg reveal">
+          <span class="section-label">Verified Testimonials</span>
+          <h2 class="display-2" id="partner-voices-heading">Voices From Our Alliances</h2>
+          <div class="gold-divider center"></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:var(--space-lg);max-width:1100px;margin:0 auto">
+          <!-- Voice 1 -->
+          <div class="partner-card reveal">
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem">
+              <div class="partner-voice-avatar">
+                UNDP
+              </div>
+              <div>
+                <div style="font-weight:700;font-size:0.95rem;color:var(--dark-text)">Dr. Sophia Nkemdirim</div>
+                <div style="font-size:0.75rem;color:var(--accent);font-weight:600">GEF Regional Lead, UNDP East Africa</div>
+              </div>
+            </div>
+            <p class="body-sm text-light mb-md" style="font-style:italic;line-height:1.7">
+              "Nova Green Foundation has set a standard for civil society implementing partners under UNDP's GEF Small Grants framework. Their community engagement methodology, digital reporting rigor, and ecological results consistently exceed international benchmarks."
+            </p>
+            <div class="partner-card-footer" style="padding-top:0.75rem">
+              <span class="partner-badge-pill">Verified UN Partner</span>
+              <span style="font-size:0.75rem;color:var(--muted-text)">Since 2020</span>
+            </div>
+          </div>
+
+          <!-- Voice 2 -->
+          <div class="partner-card reveal">
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem">
+              <div class="partner-voice-avatar">
+                WWF
+              </div>
+              <div>
+                <div style="font-weight:700;font-size:0.95rem;color:var(--dark-text)">James Macharia</div>
+                <div style="font-size:0.75rem;color:var(--accent);font-weight:600">Country Director, WWF East Africa</div>
+              </div>
+            </div>
+            <p class="body-sm text-light mb-md" style="font-style:italic;line-height:1.7">
+              "Our elephant corridor restoration collaboration has demonstrated that conservation succeeds only when community rights are honored. Nova Green's grassroots trust, combined with WWF's spatial science, is establishing lasting ecological connectivity."
+            </p>
+            <div class="partner-card-footer" style="padding-top:0.75rem">
+              <span class="partner-badge-pill">Conservation Alliance</span>
+              <span style="font-size:0.75rem;color:var(--muted-text)">Since 2020</span>
+            </div>
+          </div>
+
+          <!-- Voice 3 -->
+          <div class="partner-card reveal">
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem">
+              <div class="partner-voice-avatar">
+                SAF
+              </div>
+              <div>
+                <div style="font-weight:700;font-size:0.95rem;color:var(--dark-text)">Mercy Wanjiru</div>
+                <div style="font-size:0.75rem;color:var(--accent);font-weight:600">Head of ESG & Foundation Programmes</div>
+              </div>
+            </div>
+            <p class="body-sm text-light mb-md" style="font-style:italic;line-height:1.7">
+              "Our strategic alliance allows Safaricom Foundation to deploy corporate capital directly into verified, data-backed environmental infrastructure. Their radical transparency and sensor telemetry give our board total confidence in every shilling."
+            </p>
+            <div class="partner-card-footer" style="padding-top:0.75rem">
+              <span class="partner-badge-pill">Corporate Ally</span>
+              <span style="font-size:0.75rem;color:var(--muted-text)">Since 2020</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Become a Partner Pathways Section -->
+    <section id="become-partner" style="background:linear-gradient(135deg, var(--forest-900) 0%, #0d2b1a 60%, #153e27 100%);padding:var(--space-3xl) 0" aria-labelledby="partner-cta-heading">
+      <div class="container text-center">
+        <div class="reveal">
+          <span class="section-label" style="color:var(--accent)">Collaborative Pathways</span>
+          <h2 class="display-2 text-white" id="partner-cta-heading">Architect an Alliance With Us</h2>
+          <div class="gold-divider center"></div>
+          <p class="body-lg text-white mb-lg" style="opacity:0.88;max-width:620px;margin:0 auto var(--space-xl)">
+            Whether you represent a bilateral donor agency, an international research consortium, or a corporation executing verified Scope 3 carbon insetting, we provide institutional governance and ground-level execution.
+          </p>
+
+          <div class="pathway-grid">
+            <div class="pathway-card">
+              <div>
+                <div class="pathway-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                <div class="pathway-title">Funding & Grants</div>
+                <p class="pathway-desc">Co-fund landscape-scale reforestation corridors, solar microgrids, or water catchment programs with transparent audited reporting.</p>
+              </div>
+              <button type="button" class="btn btn-secondary btn-sm open-partner-inquiry-btn" data-preselect-tier="funding" style="width:100%;text-align:center">Explore Grant Model →</button>
+            </div>
+
+            <div class="pathway-card">
+              <div>
+                <div class="pathway-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/><circle cx="12" cy="12" r="10"/></svg></div>
+                <div class="pathway-title">Science & MRV</div>
+                <p class="pathway-desc">Collaborate on botanical trials, satellite telemetry, GIS spatial mapping, and peer-reviewed biodiversity loss monitoring.</p>
+              </div>
+              <button type="button" class="btn btn-secondary btn-sm open-partner-inquiry-btn" data-preselect-tier="technical" style="width:100%;text-align:center">Research Consortium →</button>
+            </div>
+
+            <div class="pathway-card">
+              <div>
+                <div class="pathway-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+                <div class="pathway-title">Corporate ESG</div>
+                <p class="pathway-desc">Channel verified corporate climate contributions into geotagged indigenous tree plantings with satellite survival accountability.</p>
+              </div>
+              <button type="button" class="btn btn-secondary btn-sm open-partner-inquiry-btn" data-preselect-tier="corporate" style="width:100%;text-align:center">ESG Insetting →</button>
+            </div>
+
+            <div class="pathway-card">
+              <div>
+                <div class="pathway-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                <div class="pathway-title">Grassroots CBOs</div>
+                <p class="pathway-desc">Join our coalition as a community forest association (CFA), women's cooperative, or indigenous pastoralist council.</p>
+              </div>
+              <button type="button" class="btn btn-secondary btn-sm open-partner-inquiry-btn" data-preselect-tier="community" style="width:100%;text-align:center">Community Alliance →</button>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-accent btn-lg open-partner-inquiry-btn" data-preselect-tier="funding">Submit Formal Partnership Inquiry →</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Quick-View Dossier Modal Dialog -->
+  <div class="partner-modal" id="partner-dossier-modal" role="dialog" aria-modal="true" aria-labelledby="modal-partner-name">
+    <div class="partner-modal-backdrop" id="partner-modal-backdrop"></div>
+    <div class="partner-modal-dialog">
+      <button type="button" class="partner-modal-close" id="partner-modal-close" aria-label="Close modal">×</button>
+      <div class="modal-header-section">
+        <div class="modal-logo-box" id="modal-partner-logo"></div>
+        <div>
+          <span class="partner-badge-pill" id="modal-partner-tier" style="margin-bottom:0.4rem;display:inline-block"></span>
+          <h3 class="partner-name" id="modal-partner-name" style="font-size:1.35rem"></h3>
+          <div class="partner-type" id="modal-partner-category" style="margin:0"></div>
+        </div>
+      </div>
+
+      <p class="body-sm text-light mb-md" id="modal-partner-desc" style="line-height:1.7"></p>
+
+      <div class="modal-dossier-grid">
+        <div class="modal-dossier-item">
+          <span class="modal-dossier-label">Partnership Established</span>
+          <span class="modal-dossier-val" id="modal-partner-year"></span>
+        </div>
+        <div class="modal-dossier-item">
+          <span class="modal-dossier-label">Core Strategic Focus</span>
+          <span class="modal-dossier-val" id="modal-partner-focus"></span>
+        </div>
+        <div class="modal-dossier-item" style="grid-column:1 / -1">
+          <span class="modal-dossier-label">Primary Joint Initiative</span>
+          <span class="modal-dossier-val" id="modal-partner-initiative" style="color:var(--forest-800)"></span>
+        </div>
+        <div class="modal-dossier-item" style="grid-column:1 / -1">
+          <span class="modal-dossier-label">Verified Output Benchmark</span>
+          <span class="modal-dossier-val" id="modal-partner-impact" style="color:var(--accent-dark);font-family:ui-monospace,monospace"></span>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:1.5rem">
+        <a href="contact.html" class="btn btn-primary btn-sm" style="flex:1;text-align:center">Inquire About This Joint Program</a>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('partner-dossier-modal').classList.remove('open');document.body.style.overflow='';">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Partnership Inquiry Modal Form -->
+  <div class="partner-modal" id="partner-inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="inquiry-modal-title">
+    <div class="partner-modal-backdrop" id="partner-inquiry-backdrop"></div>
+    <div class="partner-modal-dialog">
+      <button type="button" class="partner-modal-close" id="partner-inquiry-close" aria-label="Close modal">×</button>
+      <div style="margin-bottom:1.5rem">
+        <span class="partner-badge-pill" style="margin-bottom:0.4rem;display:inline-block">Alliance Application</span>
+        <h3 class="display-2" id="inquiry-modal-title" style="font-size:1.6rem">Initiate Strategic Partnership</h3>
+        <p class="body-xs text-light">Submit your organization's mandate and collaborative proposal directly to our executive partnership secretariat.</p>
+      </div>
+
+      <form id="partner-inquiry-form" style="display:flex;flex-direction:column;gap:1rem">
+        <div>
+          <label class="form-label" for="inq-org">Organization / Agency Name *</label>
+          <input type="text" id="inq-org" class="form-input" placeholder="e.g. Kenya Forestry Research Institute" required>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div>
+            <label class="form-label" for="inq-name">Contact Person *</label>
+            <input type="text" id="inq-name" class="form-input" placeholder="Dr. Jane Kamau" required>
+          </div>
+          <div>
+            <label class="form-label" for="inq-email">Official Email *</label>
+            <input type="email" id="inq-email" class="form-input" placeholder="j.kamau@kefri.org" required>
+          </div>
+        </div>
+        <div>
+          <label class="form-label" for="inq-tier">Partnership Model *</label>
+          <select id="inq-tier" name="tier" class="form-select" required>
+            <option value="funding">Institutional Funding & Bilateral Grantee</option>
+            <option value="technical">Technical Science, GIS & Botanical Research</option>
+            <option value="corporate">Corporate ESG Carbon Insetting & CSR</option>
+            <option value="community">Grassroots Community Based Organization (CBO)</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label" for="inq-scope">Brief Overview of Proposed Collaboration *</label>
+          <textarea id="inq-scope" class="form-textarea" rows="4" placeholder="Describe the geographical focus, target community beneficiaries, or proposed co-funding scope…" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-accent" style="width:100%;margin-top:0.5rem">Submit Formal Partnership Dossier →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="../assets/images/logo.jpg" alt="Nova Green Foundation" style="height:50px;width:auto;margin-bottom:var(--space-sm);border-radius:var(--radius-sm);">
+          <p class="footer-brand-desc">Championing ecological sustainability, community agroforestry, and clean energy across East Africa and beyond.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <nav class="footer-links">
+            <a href="../index.html" class="footer-link">Home</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="programmes.html" class="footer-link">Programmes</a>
+            <a href="board.html" class="footer-link">Board & Leadership</a>
+            <a href="sdgs.html" class="footer-link">SDGs & Impact</a>
+          </nav>
+        </div>
+        <div>
+          <h3 class="footer-heading">Resources</h3>
+          <nav class="footer-links">
+            <a href="partners.html" class="footer-link">Partners</a>
+            <a href="news.html" class="footer-link">News & Updates</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+            <a href="contact.html" class="footer-link">Annual Reports</a>
+          </nav>
+        </div>
+        <div>
+          <h3 class="footer-heading">Contact</h3>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span>Green House, Westlands, Nairobi</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+            <span>partnerships@novagreen.org</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-bottom-text">© 2026 Nova Green Foundation. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top" style="position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:var(--forest-800);color:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:var(--shadow-md);opacity:0;transition:all 0.3s ease;z-index:999;">↑</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>

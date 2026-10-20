@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about Nova Green Foundation — our mission, vision, history, and core values driving environmental sustainability across East Africa and beyond.">
+  <title>About Us | Nova Green Foundation</title>
+  <script>
+    (function() {
+      try {
+        var s = localStorage.getItem('nova-theme');
+        var d = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', s || (d ? 'dark' : 'light'));
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    /* ── Scroll-driven Milestones Timeline ── */
+    .timeline {
+      position: relative;
+      padding-left: 2.75rem;
+    }
+    .timeline-track {
+      position: absolute;
+      left: 10px;
+      top: 14px;
+      bottom: 24px;
+      width: 3px;
+      background: rgba(13, 43, 26, 0.12);
+      border-radius: 999px;
+    }
+    [data-theme="dark"] .timeline-track {
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .timeline-progress-line {
+      position: absolute;
+      left: 10px;
+      top: 14px;
+      width: 3px;
+      height: 0;
+      background: linear-gradient(180deg, var(--gold-500) 0%, #2e7d52 65%, var(--gold-400) 100%);
+      border-radius: 999px;
+      box-shadow: 0 0 14px rgba(201, 168, 76, 0.65);
+      transition: height 0.08s linear;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .timeline-progress-head {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translate(-50%, 50%);
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid var(--gold-500);
+      box-shadow: 0 0 10px var(--gold-500);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: var(--space-xl);
+      opacity: 0.45;
+      transform: translateY(0);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-item.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .timeline-item.current {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -2.75rem;
+      top: 0.6rem;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 3px solid var(--forest-200);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .timeline-dot-inner {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: transparent;
+      transition: all 0.3s ease;
+    }
+    .timeline-item.active .timeline-dot {
+      background: var(--gold-500);
+      border-color: #ffffff;
+      box-shadow: 0 0 0 3px var(--gold-500), 0 0 18px rgba(201, 168, 76, 0.5);
+      transform: scale(1.15);
+    }
+    [data-theme="dark"] .timeline-item.active .timeline-dot {
+      border-color: #0d1e14;
+      box-shadow: 0 0 0 3px var(--gold-500), 0 0 20px rgba(226, 194, 102, 0.6);
+    }
+    .timeline-item.active .timeline-dot-inner {
+      background: #ffffff;
+    }
+    .timeline-item.current .timeline-dot {
+      animation: dotPulse 2s infinite;
+    }
+    @keyframes dotPulse {
+      0% { box-shadow: 0 0 0 3px var(--gold-500), 0 0 0 0 rgba(201, 168, 76, 0.6); }
+      70% { box-shadow: 0 0 0 3px var(--gold-500), 0 0 0 12px rgba(201, 168, 76, 0); }
+      100% { box-shadow: 0 0 0 3px var(--gold-500), 0 0 0 0 rgba(201, 168, 76, 0); }
+    }
+    .timeline-content {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .timeline-item.active .timeline-content {
+      border-color: rgba(201, 168, 76, 0.4);
+      box-shadow: var(--shadow-md);
+    }
+    .timeline-item.current .timeline-content {
+      border-color: var(--accent);
+      box-shadow: 0 12px 32px rgba(201, 168, 76, 0.16);
+    }
+    .timeline-year {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--muted-text);
+      background: var(--forest-50);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    [data-theme="dark"] .timeline-year {
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .timeline-item.active .timeline-year {
+      color: var(--forest-900);
+      background: var(--gold-100);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+    }
+    [data-theme="dark"] .timeline-item.active .timeline-year {
+      color: var(--gold-300);
+      background: rgba(226, 194, 102, 0.15);
+      border-color: rgba(226, 194, 102, 0.3);
+    }
+    .timeline-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--dark-text);
+      margin-bottom: 0.45rem;
+      line-height: 1.3;
+    }
+    .timeline-desc {
+      font-size: 0.92rem;
+      color: var(--light-text);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+    .timeline-meta-tag {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--forest-600);
+      letter-spacing: 0.04em;
+    }
+    [data-theme="dark"] .timeline-meta-tag {
+      color: var(--forest-400);
+    }
+    
+    .milestone-live-tracker {
+      background: #ffffff;
+      border: 2px solid var(--forest-900);
+      border-radius: 0 !important;
+      padding: 1.75rem;
+      box-shadow: 6px 6px 0px var(--forest-900);
+      margin-top: 2rem;
+    }
+    [data-theme="dark"] .milestone-live-tracker {
+      background: #091a12;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 6px 6px 0px var(--accent);
+    }
+    .tracker-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .tracker-badge {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+    .tracker-step {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--light-text);
+    }
+    .tracker-current-year {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--dark-text);
+      margin-bottom: 0.35rem;
+    }
+    .tracker-current-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--light-text);
+      margin-bottom: 1.25rem;
+      line-height: 1.4;
+      min-height: 2.8rem;
+    }
+    .tracker-progress-wrap {
+      width: 100%;
+      height: 6px;
+      background: var(--forest-50);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+    [data-theme="dark"] .tracker-progress-wrap {
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .tracker-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-500), #2e7d52);
+      border-radius: 999px;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tracker-nav-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tracker-chip {
+      background: var(--forest-50);
+      border: 1px solid var(--forest-100);
+      color: var(--mid-text);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    [data-theme="dark"] .tracker-chip {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: var(--mid-text);
+    }
+    .tracker-chip:hover {
+      background: var(--forest-100);
+      color: var(--dark-text);
+      border-color: var(--accent);
+    }
+    .tracker-chip.active {
+      background: var(--gold-500);
+      color: #0d2b1a;
+      border-color: var(--gold-500);
+      font-weight: 700;
+    }
+    /* ── Formal Brutalist Architecture: Mission & Vision ── */
+    .b-section-header {
+      border-top: 2px solid var(--forest-900);
+      border-bottom: 2px solid var(--forest-900);
+      padding: 1rem 0;
+      margin-bottom: var(--space-xl);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    [data-theme="dark"] .b-section-header {
+      border-top-color: rgba(255, 255, 255, 0.25);
+      border-bottom-color: rgba(255, 255, 255, 0.25);
+    }
+    .bsh-kicker {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--forest-600);
+    }
+    [data-theme="dark"] .bsh-kicker { color: var(--gold-400); }
+    .bsh-title {
+      font-family: var(--font-sans);
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 0.15rem 0 0 0;
+      text-transform: uppercase;
+    }
+    .bsh-meta {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--light-text);
+      text-transform: uppercase;
+    }
+
+    .brutalist-mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .b-card {
+      position: relative;
+      background: var(--surface);
+      border: 2px solid var(--forest-900);
+      border-radius: 0 !important;
+      padding: 2.75rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 6px 6px 0px var(--forest-900);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .b-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0px var(--forest-900);
+    }
+
+    [data-theme="dark"] .b-card {
+      background: #091a12;
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 6px 6px 0px var(--accent);
+    }
+    [data-theme="dark"] .b-card:hover {
+      box-shadow: 9px 9px 0px var(--accent);
+    }
+
+    .b-card-meta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1.5rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--light-text);
+    }
+
+    .b-card-index {
+      border: 1px solid currentColor;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--accent);
+    }
+
+    .b-card-title {
+      font-family: var(--font-sans);
+      font-size: clamp(1.8rem, 2.4vw, 2.3rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      color: var(--dark-text);
+    }
+
+    .b-card-lead {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.6;
+      color: var(--dark-text);
+      margin-bottom: 1rem;
+    }
+
+    .b-card-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .b-card-desc {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--light-text);
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+
+    .b-card-meta-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.85rem;
+      border-top: 1px dashed var(--border-color);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--light-text);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ── Formal Brutalist Values Grid ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .value-card {
+      background: var(--surface);
+      border: 2px solid var(--forest-900);
+      border-radius: 0 !important;
+      padding: 2.25rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 4px 4px 0px var(--forest-900);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      position: relative;
+    }
+    .value-card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0px var(--forest-900);
+    }
+    [data-theme="dark"] .value-card {
+      background: #091a12;
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.22);
+    }
+    [data-theme="dark"] .value-card:hover {
+      box-shadow: 7px 7px 0px var(--accent);
+    }
+    .value-num {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      border: 1px solid currentColor;
+      display: inline-block;
+      width: fit-content;
+      padding: 0.2rem 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .value-card h3 {
+      font-family: var(--font-sans);
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.6rem;
+      color: var(--dark-text);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 992px) {
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .brutalist-mv-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+      .b-card { padding: 2rem 1.5rem; }
+    }
+    @media (max-width: 640px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .bsh-meta { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar transparent" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/images/logo.jpg" alt="Nova Green Foundation">
+      </a>
+      <div class="nav-links">
+        <a href="../index.html"       class="nav-link" data-page="home">Home</a>
+        <a href="about.html"          class="nav-link active" data-page="about">About Us</a>
+        <a href="programmes.html"     class="nav-link" data-page="programmes">Programmes</a>
+        <a href="board.html"          class="nav-link" data-page="board">Board & Leadership</a>
+        <a href="sdgs.html"           class="nav-link" data-page="sdgs">SDGs & Impact</a>
+        <a href="partners.html"       class="nav-link" data-page="partners">Partners</a>
+        <a href="news.html"           class="nav-link" data-page="news">News & Updates</a>
+        <a href="contact.html"        class="nav-link" data-page="contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light or dark theme" title="Toggle theme">
+          <span class="theme-icon sun-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </span>
+          <span class="theme-icon moon-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </span>
+        </button>
+        <a href="contact.html" class="btn btn-accent nav-cta">Get Involved</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="../index.html"   class="nav-mobile-link" data-page="home">Home</a>
+    <a href="about.html"      class="nav-mobile-link active" data-page="about">About Us</a>
+    <a href="programmes.html" class="nav-mobile-link" data-page="programmes">Programmes</a>
+    <a href="board.html"      class="nav-mobile-link" data-page="board">Board &amp; Leadership</a>
+    <a href="sdgs.html"       class="nav-mobile-link" data-page="sdgs">SDGs &amp; Impact</a>
+    <a href="partners.html"   class="nav-mobile-link" data-page="partners">Partners</a>
+    <a href="news.html"       class="nav-mobile-link" data-page="news">News &amp; Updates</a>
+    <a href="contact.html"    class="nav-mobile-link" data-page="contact">Contact</a>
+    <div class="nav-mobile-actions">
+      <button class="mobile-theme-btn" id="mobile-theme-btn" aria-label="Toggle theme">
+        <span class="theme-icon sun-icon">Switch Theme</span>
+        <span class="theme-icon moon-icon">Switch Theme</span>
+      </button>
+      <a href="contact.html" class="btn btn-accent" style="text-align:center;width:100%">Get Involved</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero" aria-label="About us page header">
+      <div class="hero-bg" style="background-image:url('../assets/images/about-hero.jpg')"></div>
+      <div class="page-hero-overlay"></div>
+      <div class="container page-hero-content">
+        <span class="section-label" style="color:var(--gold-300)">Our Story</span>
+        <h1 class="display-2 text-white">About Nova Green Foundation</h1>
+        <div class="gold-divider"></div>
+        <p class="body-lg text-white" style="opacity:0.85;max-width:600px">
+          Rooted in passion, guided by science, driven by community — discover the foundation behind our green movement.
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission & Vision (Formal Brutalist Aesthetic) -->
+    <section class="section" aria-labelledby="mission-heading">
+      <div class="container">
+        <!-- Structural Brutalist Header -->
+        <div class="b-section-header reveal">
+          <div>
+            <span class="bsh-kicker">// STRATEGIC CHARTER</span>
+            <h2 class="bsh-title">Mission &amp; Vision</h2>
+          </div>
+          <div class="bsh-meta">
+            <span>FOUNDATION DIRECTIVE · 2026–2030</span>
+          </div>
+        </div>
+
+        <div class="brutalist-mv-grid">
+          <!-- Brutalist Card 01: Our Mission -->
+          <article class="b-card reveal-left">
+            <div class="b-card-meta-top">
+              <span>MANDATE &amp; DIRECTIVE</span>
+              <span class="b-card-index">01 / 02</span>
+            </div>
+            <div>
+              <h3 class="b-card-title" id="mission-heading">OUR MISSION</h3>
+              <p class="b-card-lead">
+                To drive sustainable, market-led green economic transformation across Africa.
+              </p>
+              <div class="b-card-divider"></div>
+              <p class="b-card-desc">
+                Nova Green Economy Foundation empowers communities, enterprises, and local institutions to adopt regenerative economic systems. We bridge sustainable capital, climate technologies, and grassroots capacity to scale food security, circular value chains, renewable energy commerce, and climate resilience.
+              </p>
+            </div>
+            <div class="b-card-meta-bottom">
+              <span>STRATEGIC FOCUS</span>
+              <span>ENTERPRISE · LIVELIHOODS · SYSTEMS</span>
+            </div>
+          </article>
+
+          <!-- Brutalist Card 02: Our Vision -->
+          <article class="b-card reveal-right">
+            <div class="b-card-meta-top">
+              <span>STRATEGIC HORIZON</span>
+              <span class="b-card-index">02 / 02</span>
+            </div>
+            <div>
+              <h3 class="b-card-title">OUR VISION</h3>
+              <p class="b-card-lead">
+                A thriving, self-sustaining green economy across Africa by 2030.
+              </p>
+              <div class="b-card-divider"></div>
+              <p class="b-card-desc">
+                We envision an equitable continental economy where green enterprise is the cornerstone of shared prosperity. By aligning business productivity with environmental stewardship, we foster resilient communities where youth, women, and rural producers thrive within balanced, restored ecosystems.
+              </p>
+            </div>
+            <div class="b-card-meta-bottom">
+              <span>TARGET HORIZON</span>
+              <span>PAN-AFRICAN IMPACT BY 2030</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="section bg-cream" aria-labelledby="story-heading">
+      <div class="container">
+        <div class="grid-2" style="align-items:center;gap:var(--space-2xl)">
+          <div class="reveal-left">
+            <span class="section-label">Our Story</span>
+            <h2 class="display-2" id="story-heading">Born from a Burning Forest</h2>
+            <div class="gold-divider"></div>
+            <p class="body-lg text-light mb-md">
+              In 2019, a group of ecologists, community organizers, and youth activists witnessed the devastation of the Mau Forest complex — East Africa's largest montane forest, losing 25,000 hectares every year to encroachment and charcoal burning.
+            </p>
+            <p class="body-md text-light mb-md">
+              Rather than despair, they organized. Nova Green Foundation was registered that same year with a simple mandate: <strong>act with urgency, act with evidence, act with community</strong>.
+            </p>
+            <p class="body-md text-light">
+              Seven years on, we operate across 8 counties in Kenya, with affiliate programmes in Uganda, Tanzania, and Rwanda. Our team of 85 staff and 2,000+ volunteers represents some of the region's brightest environmental minds — united by the conviction that a green future is not only possible, but necessary.
+            </p>
+          </div>
+          <div class="reveal-right">
+            <div style="border:2px solid var(--forest-900);box-shadow:6px 6px 0px var(--forest-900);overflow:hidden;background:#ffffff;">
+              <img src="../assets/images/about-hero.jpg" alt="Community members engaged in environmental work" style="width:100%;display:block;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="section" aria-labelledby="values-heading">
+      <div class="container">
+        <div class="text-center mb-lg reveal">
+          <span class="section-label">What Drives Us</span>
+          <h2 class="display-2" id="values-heading">Our Core Values</h2>
+          <div class="gold-divider center"></div>
+        </div>
+        <div class="values-grid">
+          <div class="value-card reveal delay-1">
+            <span class="value-num">01</span>
+            <h3 class="heading-2 mb-sm">Regenerative Enterprise</h3>
+            <p class="body-sm text-light">Fostering market-viable business models that restore ecosystems rather than depleting them, aligning profitability with natural renewal.</p>
+          </div>
+          <div class="value-card reveal delay-2">
+            <span class="value-num">02</span>
+            <h3 class="heading-2 mb-sm">Community Co-Ownership</h3>
+            <p class="body-sm text-light">Sustainable transformation succeeds when local producers lead. We co-create interventions that anchor economic sovereignty in communities.</p>
+          </div>
+          <div class="value-card reveal delay-3">
+            <span class="value-num">03</span>
+            <h3 class="heading-2 mb-sm">Evidence &amp; Rigorous Metrics</h3>
+            <p class="body-sm text-light">Empirical data, verified carbon baselines, and transparent socioeconomic tracking govern our resource allocation and impact reporting.</p>
+          </div>
+          <div class="value-card reveal delay-4">
+            <span class="value-num">04</span>
+            <h3 class="heading-2 mb-sm">Equitable Green Growth</h3>
+            <p class="body-sm text-light">Prioritizing smallholder farmers, youth innovators, and women entrepreneurs who bear disproportionate climate burdens.</p>
+          </div>
+          <div class="value-card reveal delay-5">
+            <span class="value-num">05</span>
+            <h3 class="heading-2 mb-sm">Circular Systems Thinking</h3>
+            <p class="body-sm text-light">Eliminating waste through closed-loop agricultural and industrial value chains, transforming byproducts into economic value.</p>
+          </div>
+          <div class="value-card reveal delay-6">
+            <span class="value-num">06</span>
+            <h3 class="heading-2 mb-sm">Pragmatic Capital Mobilization</h3>
+            <p class="body-sm text-light">Connecting grassroots green initiatives to blended finance, climate funds, and impact investors with institutional governance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section bg-cream" aria-labelledby="timeline-heading" id="milestones-section">
+      <div class="container">
+        <div class="grid-2" style="gap:var(--space-2xl);align-items:start">
+          <div class="reveal-left" style="position: sticky; top: 110px;">
+            <span class="section-label">Our Journey</span>
+            <h2 class="display-2" id="timeline-heading">Milestones That Shaped Us</h2>
+            <div class="gold-divider"></div>
+            <p class="body-md text-light">From a small volunteer group in the Aberdares to a pan-African force for ecological renewal — here are the pivotal moments that defined Nova Green Foundation.</p>
+            
+            <!-- Live Scroll-Driven Journey Tracker -->
+            <div class="milestone-live-tracker">
+              <div class="tracker-header">
+                <span class="tracker-badge">Active Milestone</span>
+                <span class="tracker-step" id="milestone-step-indicator">1 of 6</span>
+              </div>
+              <div class="tracker-current-year" id="milestone-current-year">2019</div>
+              <div class="tracker-current-title" id="milestone-current-title">Foundation Established</div>
+              <div class="tracker-progress-wrap">
+                <div class="tracker-progress-bar" id="milestone-tracker-bar" style="width: 16%;"></div>
+              </div>
+              <div class="tracker-nav-chips">
+                <button type="button" class="tracker-chip active" data-target="0">2019</button>
+                <button type="button" class="tracker-chip" data-target="1">2020</button>
+                <button type="button" class="tracker-chip" data-target="2">2021</button>
+                <button type="button" class="tracker-chip" data-target="3">2023</button>
+                <button type="button" class="tracker-chip" data-target="4">2025</button>
+                <button type="button" class="tracker-chip" data-target="5">2026</button>
+              </div>
+            </div>
+          </div>
+          <div class="timeline reveal-right" id="milestones-timeline">
+            <!-- Background track line -->
+            <div class="timeline-track" aria-hidden="true"></div>
+            <!-- Dynamic scroll-driven progress line -->
+            <div class="timeline-progress-line" id="timeline-progress-line" aria-hidden="true">
+              <div class="timeline-progress-head"></div>
+            </div>
+
+            <!-- Milestone 01: 2019 -->
+            <div class="timeline-item active" data-index="0" id="milestone-2019">
+              <div class="timeline-dot" aria-hidden="true"><span class="timeline-dot-inner"></span></div>
+              <div class="timeline-content">
+                <div class="timeline-year">2019 • Genesis</div>
+                <h3 class="timeline-title">Foundation Established</h3>
+                <p class="timeline-desc">Registered as a non-profit environmental NGO in Nairobi, Kenya. Our very first community tree-planting mobilisation rallied 150 volunteers and planted 3,500 indigenous seedlings across degraded ridges of the Aberdare mountain range.</p>
+                <span class="timeline-meta-tag">150 Volunteers • Aberdare Range Reforestation</span>
+              </div>
+            </div>
+
+            <!-- Milestone 02: 2020 -->
+            <div class="timeline-item" data-index="1" id="milestone-2020">
+              <div class="timeline-dot" aria-hidden="true"><span class="timeline-dot-inner"></span></div>
+              <div class="timeline-content">
+                <div class="timeline-year">2020 • Global Multilateral Entry</div>
+                <h3 class="timeline-title">First UN Partnership</h3>
+                <p class="timeline-desc">Selected as accredited implementing partner for the United Nations Development Programme (UNDP) Global Environment Facility (GEF) Small Grants Programme. Launched our flagship Water Conservation Initiative protecting 8 highland river basin catchments.</p>
+                <span class="timeline-meta-tag">UNDP / GEF • 8 River Basins Protected</span>
+              </div>
+            </div>
+
+            <!-- Milestone 03: 2021 -->
+            <div class="timeline-item" data-index="2" id="milestone-2021">
+              <div class="timeline-dot" aria-hidden="true"><span class="timeline-dot-inner"></span></div>
+              <div class="timeline-content">
+                <div class="timeline-year">2021 • Scale & Regional Expansion</div>
+                <h3 class="timeline-title">100,000 Trees Milestone</h3>
+                <p class="timeline-desc">Celebrated the planting and survival verification of our 100,000th indigenous tree. Extended regional cross-border operations into Uganda and Tanzania, and launched the Youth Eco-Education pilot curriculum across 20 rural primary schools.</p>
+                <span class="timeline-meta-tag">100k Geotagged Trees • 20 Eco-Schools</span>
+              </div>
+            </div>
+
+            <!-- Milestone 04: 2023 -->
+            <div class="timeline-item" data-index="3" id="milestone-2023">
+              <div class="timeline-dot" aria-hidden="true"><span class="timeline-dot-inner"></span></div>
+              <div class="timeline-content">
+                <div class="timeline-year">2023 • Clean Energy Infrastructure</div>
+                <h3 class="timeline-title">Clean Energy Access Launch</h3>
+                <p class="timeline-desc">Commissioned our first solar-powered microgrids and community water pumping systems in arid Turkana County. The programme now delivers clean electricity and potable water to over 12,000 pastoralist households, displacing diesel generation.</p>
+                <span class="timeline-meta-tag">12,000 Households • Solar Microgrids & Pumps</span>
+              </div>
+            </div>
+
+            <!-- Milestone 05: 2025 -->
+            <div class="timeline-item" data-index="4" id="milestone-2025">
+              <div class="timeline-dot" aria-hidden="true"><span class="timeline-dot-inner"></span></div>
+              <div class="timeline-content">
+                <div class="timeline-year">2025 • Policy & Continental Recognition</div>
+                <h3 class="timeline-title">UNEP Strategic Partnership</h3>
+                <p class="timeline-desc">Signed a landmark multi-year MOU with the UNEP East Africa Regional Hub to scale ecosystem monitoring, digital MRV standards, and community conservation corridors. Recognized as "Best Practice Environmental NGO" by Kenya's Ministry of Environment.</p>
+                <span class="timeline-meta-tag">UNEP Strategic MOU • National Best Practice Award</span>
+              </div>
+            </div>
+
+            <!-- Milestone 06: 2026 -->
+            <div class="timeline-item" data-index="5" id="milestone-2026">
+              <div class="timeline-dot" aria-hidden="true"><span class="timeline-dot-inner"></span></div>
+              <div class="timeline-content">
+                <div class="timeline-year">2026 • Vision 2030 Horizon</div>
+                <h3 class="timeline-title">500,000 Trees & Beyond</h3>
+                <p class="timeline-desc">Crossed the landmark of 500,000 verified surviving trees, directly benefiting 42 community cooperatives across East Africa. Unveiled our ambitious Vision 2030 Roadmap: 2 million trees planted, 50,000 green jobs catalyzed, and net-zero regional operations.</p>
+                <span class="timeline-meta-tag">500k Trees Milestone • 42 Cooperatives • Vision 2030</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pull Quote -->
+    <section class="section-sm">
+      <div class="container-sm">
+        <blockquote class="pull-quote reveal">
+          "We don't inherit the earth from our ancestors — we borrow it from our children. Every tree we plant, every river we restore, every child we educate about ecology is a payment on that debt."
+          <footer style="font-family:var(--font-sans);font-size:0.85rem;color:var(--light-text);margin-top:1rem;font-style:normal">
+            — <strong>Dr. Amina Osei</strong>, Executive Director, Nova Green Foundation
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="background:var(--forest-800);padding:var(--space-2xl) 0" aria-label="Call to action">
+      <div class="container text-center">
+        <h2 class="display-2 text-white mb-md reveal">Join Our Green Movement</h2>
+        <p class="body-lg text-white reveal" style="opacity:0.82;max-width:500px;margin:0 auto var(--space-lg)">Volunteers, donors, and partners are the lifeblood of everything we do. Your involvement creates real, measurable change.</p>
+        <div class="flex-center gap-md flex-wrap reveal">
+          <a href="contact.html" class="btn btn-accent btn-lg">Get Involved →</a>
+          <a href="board.html"   class="btn btn-outline-white btn-lg">Meet Our Team</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="../assets/images/logo.jpg" alt="Nova Green Foundation" style="height:50px;width:auto;margin-bottom:var(--space-sm);border-radius:var(--radius-sm);">
+          <p class="footer-brand-desc">Championing environmental sustainability, climate resilience, and green innovation across East Africa and beyond.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <nav class="footer-links">
+            <a href="../index.html"     class="footer-link">Home</a>
+            <a href="about.html"        class="footer-link">About Us</a>
+            <a href="programmes.html"   class="footer-link">Programmes</a>
+            <a href="board.html"        class="footer-link">Board & Leadership</a>
+            <a href="sdgs.html"         class="footer-link">SDGs & Impact</a>
+          </nav>
+        </div>
+        <div>
+          <h3 class="footer-heading">Resources</h3>
+          <nav class="footer-links">
+            <a href="partners.html"   class="footer-link">Partners</a>
+            <a href="news.html"       class="footer-link">News & Updates</a>
+            <a href="contact.html"    class="footer-link">Contact</a>
+            <a href="#"               class="footer-link">Annual Reports</a>
+            <a href="#"               class="footer-link">Privacy Policy</a>
+          </nav>
+        </div>
+        <div>
+          <h3 class="footer-heading">Contact</h3>
+          <div class="footer-contact-item"><span style="font-family:ui-monospace,monospace;font-size:0.75rem;font-weight:700;color:var(--accent);">LOCATION:</span><span>Kampala, Uganda</span></div>
+          <div class="footer-contact-item"><span style="font-family:ui-monospace,monospace;font-size:0.75rem;font-weight:700;color:var(--accent);">PHONE:</span><span>+256 700 000 000</span></div>
+          <div class="footer-contact-item"><span style="font-family:ui-monospace,monospace;font-size:0.75rem;font-weight:700;color:var(--accent);">EMAIL:</span><span>info@novagreen.org</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-bottom-text">© 2026 Nova Green Foundation. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#" class="footer-link footer-bottom-text">Privacy Policy</a>
+          <a href="#" class="footer-link footer-bottom-text">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top" style="position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:var(--forest-800);color:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:var(--shadow-md);opacity:0;transition:all 0.3s ease;z-index:999;">↑</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>
