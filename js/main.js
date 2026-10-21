@@ -194,9 +194,50 @@ function initBlogFilter() {
   });
 }
 
-// ── Contact Form ─────────────────────────────────────────────
+// ── Contact Form & Involvement Tabs ──────────────────────────
 function initContactForm() {
   const form = document.getElementById('contact-form');
+  const tabs = document.querySelectorAll('.tab-btn');
+  const typeSelect = document.getElementById('contact-type');
+  const wayBtns = document.querySelectorAll('[data-target-tab]');
+
+  const tabToValueMap = {
+    'tab-general': 'programme',
+    'tab-volunteer': 'volunteer',
+    'tab-partner': 'partner',
+    'tab-media': 'media',
+    'tab-donate': 'donate'
+  };
+
+  function activateTab(tabId, scrollDown = false) {
+    tabs.forEach(t => t.classList.toggle('active', t.id === tabId));
+    const val = tabToValueMap[tabId];
+    if (typeSelect && val) {
+      typeSelect.value = val;
+    }
+    if (scrollDown) {
+      const targetEl = document.getElementById('contact-form-heading') || form;
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      activateTab(tab.id, false);
+    });
+  });
+
+  wayBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetTab = btn.getAttribute('data-target-tab');
+      activateTab(targetTab, true);
+    });
+  });
+
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
@@ -653,6 +694,23 @@ function initPartnersPage() {
   }
 }
 
+// ── Footer Watermark Animation ──────────────────────────────
+function initFooterWatermark() {
+  const watermarkText = document.querySelector('.footer-watermark-text');
+  if (!watermarkText) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        watermarkText.classList.add('animated');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(watermarkText);
+}
+
 // ── INIT ────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
@@ -670,4 +728,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initMilestoneTimeline();
   initPartnersPage();
+  initFooterWatermark();
 });

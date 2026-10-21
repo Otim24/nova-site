@@ -216,6 +216,305 @@
       .contact-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
     }
+
+    /* ── Ways to Get Involved Cards & Arrow Animation ── */
+    .ways-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      position: relative;
+    }
+    .way-card {
+      background: var(--surface);
+      border: 2px solid var(--forest-900);
+      border-radius: 0 !important;
+      box-shadow: 4px 4px 0px var(--forest-900);
+      padding: var(--space-lg) 1.25rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+    }
+    [data-theme="dark"] .way-card {
+      background: #091a12;
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 4px 4px 0px var(--accent);
+    }
+    .way-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 8px 8px 0px var(--forest-900);
+    }
+    [data-theme="dark"] .way-card:hover {
+      box-shadow: 8px 8px 0px var(--accent);
+      border-color: var(--accent);
+    }
+    .way-icon-box {
+      width: 52px;
+      height: 52px;
+      background: var(--forest-50);
+      border: 1.5px solid var(--forest-900);
+      border-radius: 0;
+      box-shadow: 2px 2px 0 var(--forest-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-sm);
+      color: var(--forest-900);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    [data-theme="dark"] .way-icon-box {
+      background: #143222;
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 2px 2px 0 var(--accent);
+      color: var(--accent);
+    }
+    .way-card:hover .way-icon-box {
+      transform: scale(1.1) rotate(2deg);
+      background: var(--gold-100);
+    }
+    [data-theme="dark"] .way-card:hover .way-icon-box {
+      background: rgba(201, 168, 76, 0.2);
+    }
+    .way-card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--dark-text);
+    }
+    .way-card-desc {
+      font-size: 0.85rem;
+      color: var(--light-text);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    /* Featured Donate Card: Centered with Donate Button */
+    .way-card.donate-featured {
+      border: 2px solid var(--accent);
+      box-shadow: 5px 5px 0px var(--accent);
+      background: linear-gradient(180deg, rgba(201, 168, 76, 0.08) 0%, var(--surface) 100%);
+    }
+    [data-theme="dark"] .way-card.donate-featured {
+      background: linear-gradient(180deg, rgba(201, 168, 76, 0.14) 0%, #091a12 100%);
+      box-shadow: 5px 5px 0px var(--accent);
+    }
+    .way-card.donate-featured:hover {
+      box-shadow: 9px 9px 0px var(--accent);
+    }
+    .way-card.donate-featured .way-icon-box {
+      background: var(--gold-100);
+      border-color: var(--accent);
+      color: var(--forest-900);
+    }
+    [data-theme="dark"] .way-card.donate-featured .way-icon-box {
+      background: rgba(201, 168, 76, 0.25);
+      color: var(--gold-300);
+    }
+    .donate-pill-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: var(--forest-950);
+      font-family: ui-monospace, monospace;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.65rem;
+      border: 1.5px solid var(--forest-900);
+      box-shadow: 2px 2px 0 var(--forest-900);
+      white-space: nowrap;
+    }
+    [data-theme="dark"] .donate-pill-badge {
+      border-color: var(--accent);
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+    }
+    .way-donate-btn {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.6rem 1rem;
+      background: var(--accent);
+      color: var(--forest-950);
+      font-family: ui-monospace, monospace;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1.5px solid var(--forest-900);
+      box-shadow: 2px 2px 0 var(--forest-900);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .way-donate-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--forest-900);
+      background: #dfbc5e;
+    }
+    [data-theme="dark"] .way-donate-btn {
+      box-shadow: 2px 2px 0 #000;
+    }
+    .way-donate-btn .arrow-anim {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+    .way-donate-btn:hover .arrow-anim {
+      transform: translateX(4px);
+    }
+
+    /* Action buttons for other cards */
+    .way-link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      font-family: ui-monospace, monospace;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--forest-800);
+      background: transparent;
+      border: 1px solid rgba(13, 43, 26, 0.25);
+      padding: 0.45rem 0.8rem;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+    [data-theme="dark"] .way-link-btn {
+      color: var(--forest-300);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .way-link-btn:hover {
+      background: var(--forest-900);
+      color: #ffffff;
+      border-color: var(--forest-900);
+      box-shadow: 2px 2px 0 var(--forest-900);
+      transform: translate(-1px, -1px);
+    }
+    [data-theme="dark"] .way-link-btn:hover {
+      background: var(--accent);
+      color: var(--forest-950);
+      border-color: var(--accent);
+      box-shadow: 2px 2px 0 var(--accent);
+    }
+    .way-link-btn .arrow-anim {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+    .way-link-btn:hover .arrow-anim {
+      transform: translateX(4px);
+    }
+
+    /* Animated arrows on right side of Advocate card */
+    .advocate-card {
+      overflow: visible;
+    }
+    .advocate-side-arrows {
+      position: absolute;
+      right: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      pointer-events: none;
+      z-index: 4;
+    }
+    .side-arrow-stream {
+      display: flex;
+      align-items: center;
+      background: var(--forest-900);
+      color: var(--accent);
+      padding: 7px 5px;
+      border: 1.5px solid var(--forest-900);
+      box-shadow: 2px 2px 0 var(--forest-900);
+      animation: pulseRightArrow 1.6s infinite ease-in-out;
+    }
+    [data-theme="dark"] .side-arrow-stream {
+      background: var(--accent);
+      color: var(--forest-950);
+      border-color: var(--accent);
+      box-shadow: 2px 2px 0 #000;
+    }
+    @keyframes pulseRightArrow {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(6px);
+      }
+    }
+    .side-arrow-stream svg {
+      display: block;
+      animation: arrowStreamShift 1.2s infinite ease-in-out;
+    }
+    @keyframes arrowStreamShift {
+      0%, 100% { opacity: 0.45; transform: translateX(-2px); }
+      50% { opacity: 1; transform: translateX(2px); }
+    }
+
+    /* Connecting flow arrows between cards (Desktop) */
+    .card-flow-arrow {
+      position: absolute;
+      right: -14px;
+      top: 42%;
+      transform: translateY(-50%);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1.5px solid var(--forest-900);
+      box-shadow: 2px 2px 0 var(--forest-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--forest-900);
+      z-index: 3;
+      animation: floatFlowArrow 2s infinite ease-in-out;
+      pointer-events: none;
+    }
+    [data-theme="dark"] .card-flow-arrow {
+      background: #0f2318;
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 2px 2px 0 var(--accent);
+    }
+    @keyframes floatFlowArrow {
+      0%, 100% { transform: translateY(-50%) translateX(0); }
+      50% { transform: translateY(-50%) translateX(3px); }
+    }
+
+    @media (max-width: 992px) {
+      .ways-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .card-flow-arrow {
+        display: none;
+      }
+      .advocate-side-arrows {
+        right: -10px;
+      }
+    }
+    @media (max-width: 640px) {
+      .ways-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .advocate-side-arrows {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -279,26 +578,71 @@
           <span class="section-label">How to Join</span>
           <h2 class="heading-1" id="engage-heading">Ways to Get Involved</h2>
         </div>
-        <div class="grid-4">
-          <div class="card reveal delay-1" style="text-align:center;padding:var(--space-lg)">
-            <div style="width:48px;height:48px;background:var(--forest-50);border:1.5px solid var(--forest-900);border-radius:0;box-shadow:2px 2px 0 var(--forest-900);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-sm);color:var(--forest-900);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 12 8 9 4 12"/><path d="M12 12C12 12 16 7 20 9"/></svg></div>
-            <h3 class="heading-3 mb-sm">Volunteer</h3>
-            <p class="body-sm text-light">Join a planting day, field programme, or office team. All skill levels welcome.</p>
+        <div class="ways-grid">
+          <!-- Card 1: Volunteer -->
+          <div class="card way-card reveal delay-1" id="way-card-volunteer">
+            <div class="way-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 12 8 9 4 12"/><path d="M12 12C12 12 16 7 20 9"/></svg>
+            </div>
+            <h3 class="way-card-title">Volunteer</h3>
+            <p class="way-card-desc">Join a planting day, field programme, or office team. All skill levels welcome.</p>
+            <button type="button" class="way-link-btn" data-target-tab="tab-volunteer">
+              Volunteer With Us <span class="arrow-anim" aria-hidden="true">→</span>
+            </button>
+            <div class="card-flow-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
           </div>
-          <div class="card reveal delay-2" style="text-align:center;padding:var(--space-lg)">
-            <div style="width:48px;height:48px;background:var(--forest-50);border:1.5px solid var(--forest-900);border-radius:0;box-shadow:2px 2px 0 var(--forest-900);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-sm);color:var(--forest-900);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-            <h3 class="heading-3 mb-sm">Donate</h3>
-            <p class="body-sm text-light">Your contribution plants trees, installs solar, and educates children. Every shilling counts.</p>
+
+          <!-- Card 2: Donate (Featured & Centered with Donate Button) -->
+          <div class="card way-card donate-featured reveal delay-2" id="way-card-donate">
+            <span class="donate-pill-badge">Direct Impact</span>
+            <div class="way-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h3 class="way-card-title">Donate</h3>
+            <p class="way-card-desc">Your contribution plants trees, installs solar, and educates children. Every shilling counts.</p>
+            <button type="button" class="way-donate-btn" data-target-tab="tab-donate" id="ways-donate-btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Donate Now <span class="arrow-anim" aria-hidden="true">→</span>
+            </button>
+            <div class="card-flow-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
           </div>
-          <div class="card reveal delay-3" style="text-align:center;padding:var(--space-lg)">
-            <div style="width:48px;height:48px;background:var(--forest-50);border:1.5px solid var(--forest-900);border-radius:0;box-shadow:2px 2px 0 var(--forest-900);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-sm);color:var(--forest-900);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-            <h3 class="heading-3 mb-sm">Partner</h3>
-            <p class="body-sm text-light">Corporate, NGO, or government — design a partnership that aligns your ESG goals with real impact.</p>
+
+          <!-- Card 3: Partner -->
+          <div class="card way-card reveal delay-3" id="way-card-partner">
+            <div class="way-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="way-card-title">Partner</h3>
+            <p class="way-card-desc">Corporate, NGO, or government — design a partnership that aligns your ESG goals with real impact.</p>
+            <button type="button" class="way-link-btn" data-target-tab="tab-partner">
+              Partner With Us <span class="arrow-anim" aria-hidden="true">→</span>
+            </button>
+            <div class="card-flow-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
           </div>
-          <div class="card reveal delay-4" style="text-align:center;padding:var(--space-lg)">
-            <div style="width:48px;height:48px;background:var(--forest-50);border:1.5px solid var(--forest-900);border-radius:0;box-shadow:2px 2px 0 var(--forest-900);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-sm);color:var(--forest-900);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div>
-            <h3 class="heading-3 mb-sm">Advocate</h3>
-            <p class="body-sm text-light">Amplify our work on social media, speak at events, or advocate for green policy in your community.</p>
+
+          <!-- Card 4: Advocate (With Animated Arrows on Right Side) -->
+          <div class="card way-card advocate-card reveal delay-4" id="way-card-advocate">
+            <!-- Animated Arrows on the right side of the card -->
+            <div class="advocate-side-arrows" aria-hidden="true" title="Advocate">
+              <div class="side-arrow-stream">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="18" y2="12"></line><polyline points="12 6 18 12 12 18"></polyline></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:-6px;"><line x1="4" y1="12" x2="18" y2="12"></line><polyline points="12 6 18 12 12 18"></polyline></svg>
+              </div>
+            </div>
+            <div class="way-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            </div>
+            <h3 class="way-card-title">Advocate</h3>
+            <p class="way-card-desc">Amplify our work on social media, speak at events, or advocate for green policy in your community.</p>
+            <button type="button" class="way-link-btn" data-target-tab="tab-media">
+              Advocate Now <span class="arrow-anim" aria-hidden="true">→</span>
+            </button>
           </div>
         </div>
       </div>
@@ -528,6 +872,7 @@
   </main>
 
   <footer class="footer">
+    <div class="footer-watermark" aria-hidden="true"><span class="footer-watermark-text">NOVA</span></div>
     <div class="container">
       <div class="footer-grid">
         <div>

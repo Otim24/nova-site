@@ -121,6 +121,8 @@
       100% { box-shadow: 0 0 0 3px var(--gold-500), 0 0 0 0 rgba(201, 168, 76, 0); }
     }
     .timeline-content {
+      position: relative;
+      z-index: 2;
       background: var(--card-bg);
       border-radius: var(--radius-lg);
       padding: 1.5rem 1.75rem;
@@ -490,14 +492,55 @@
       text-transform: uppercase;
     }
 
+    .milestones-sticky-col {
+      position: sticky;
+      top: 110px;
+      z-index: 5;
+    }
+
     @media (max-width: 992px) {
       .values-grid { grid-template-columns: repeat(2, 1fr); }
       .brutalist-mv-grid { grid-template-columns: 1fr; gap: 1.75rem; }
       .b-card { padding: 2rem 1.5rem; }
+      .milestones-sticky-col {
+        position: static !important;
+        top: auto !important;
+        margin-bottom: var(--space-xl);
+      }
+      .milestone-live-tracker {
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
     }
     @media (max-width: 640px) {
       .values-grid { grid-template-columns: 1fr; }
       .bsh-meta { display: none; }
+      .timeline {
+        padding-left: 2.25rem;
+      }
+      .timeline-track,
+      .timeline-progress-line {
+        left: 8px;
+      }
+      .timeline-dot {
+        left: -2.25rem;
+        width: 19px;
+        height: 19px;
+      }
+      .timeline-dot-inner {
+        width: 5px;
+        height: 5px;
+      }
+      .timeline-content {
+        padding: 1.25rem 1.15rem;
+      }
+      .tracker-current-year {
+        font-size: 1.6rem;
+      }
+      .tracker-current-title {
+        min-height: auto;
+        margin-bottom: 0.85rem;
+      }
     }
   </style>
 </head>
@@ -701,7 +744,7 @@
     <section class="section bg-cream" aria-labelledby="timeline-heading" id="milestones-section">
       <div class="container">
         <div class="grid-2" style="gap:var(--space-2xl);align-items:start">
-          <div class="reveal-left" style="position: sticky; top: 110px;">
+          <div class="milestones-sticky-col reveal-left">
             <span class="section-label">Our Journey</span>
             <h2 class="display-2" id="timeline-heading">Milestones That Shaped Us</h2>
             <div class="gold-divider"></div>
@@ -833,6 +876,7 @@
 
   <!-- Footer -->
   <footer class="footer">
+    <div class="footer-watermark" aria-hidden="true"><span class="footer-watermark-text">NOVA</span></div>
     <div class="container">
       <div class="footer-grid">
         <div>
